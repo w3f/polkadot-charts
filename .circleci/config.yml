@@ -1,0 +1,36 @@
+version: 2
+
+jobs:
+  buildImage:
+    docker:
+      - image: web3f/ci-commons:v0.1.9
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          command: |
+            /scripts/build-image.sh web3f/polkadot-deployer .
+
+  publishChart:
+    docker:
+      - image: web3f/ci-commons:v0.1.9
+    steps:
+      - checkout
+      - run:
+          command: |
+            /scripts/publish-chart.sh
+
+workflows:
+  version: 2
+  test-deploy:
+    jobs:
+      - buildImage:
+          filters:
+            branches:
+              only: /master/
+      - publishChart:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*/

@@ -1,0 +1,14 @@
+{{ if .Values.externalAccess }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Chart.Name }}
+  labels:
+    app: {{ .Chart.Name }}
+spec:
+  ports:
+  - port: 80
+    targetPort: websocket-rpc
+  selector:
+    app: {{ .Chart.Name }}
+{{ end -}}

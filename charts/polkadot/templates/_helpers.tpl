@@ -12,3 +12,8 @@
 {{- define "polkadot-deployer.serviceAccount" -}}
 {{ .Chart.Name }}
 {{- end }}
+
+{{/* Returns the certificate name */}}
+{{- define "polkadot-deployer.serviceAccount" -}}
+{{ .Chart.Name }}
+{{- end }}

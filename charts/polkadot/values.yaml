@@ -11,6 +11,7 @@ chainspec:
   createConfigmap: false
   path: "/chainspec/chainspec.json"
 
+createServiceAccount: false
 externalAccess: false
 domain: polkadot.w3f.tech
 

@@ -1,0 +1,25 @@
+{{ if .Values.externalAccess -}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ .Chart.Name }}
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/limit-rps: "10"
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/session-cookie-max-age: 172800
+    nginx.ingress.kubernetes.io/session-cookie-expires: 172800
+spec:
+  tls:
+  - hosts:
+      - {{ .Values.domain }}
+    secretName: {{ include "polkadot-deployer.tlsSecretName" . }}
+  rules:
+  - host: {{ .Values.domain }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ include "polkadot-deployer.tlsSecretName" . }}
+          servicePort: 80
+{{ end -}}

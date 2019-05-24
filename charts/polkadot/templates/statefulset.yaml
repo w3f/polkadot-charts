@@ -3,7 +3,8 @@ kind: StatefulSet
 metadata:
   name: {{ .Release.Name }}
   labels:
-    app: {{ .Release.Name }}
+    node: {{ .Release.Name }}
+    app: {{ .Chart.Name }}
 spec:
   replicas: 1
   revisionHistoryLimit: 3
@@ -11,13 +12,19 @@ spec:
     type: RollingUpdate
   selector:
     matchLabels:
-      app: {{ .Release.Name }}
+      node: {{ .Release.Name }}
+      app: {{ .Chart.Name }}
   template:
     metadata:
       labels:
-        app: {{ .Release.Name }}
+        node: {{ .Release.Name }}
+        app: {{ .Chart.Name }}
     spec:
       serviceAccount: {{ include "polkadot-deployer.serviceAccount" . }}
+      securityContext:
+        runAsUser: 1000
+        fsGroup: 1000
+        runAsNonRoot: true
       {{- if .Values.chainspec.custom }}
       initContainers:
       - name: {{ .Release.Name }}-init
@@ -32,6 +39,8 @@ spec:
         - name: custom-chainspec
           mountPath: /app/custom_chainspec.json
           subPath: custom_chainspec.json
+        securityContext:
+          allowPrivilegeEscalation: false
       {{- end }}
       containers:
       - name: {{ .Release.Name }}
@@ -77,9 +86,7 @@ spec:
         - name: chainspec
           mountPath: /chainspec
         securityContext:
-          runAsNonRoot: true
-          runAsUser: 1000
-          fsGroup: 1000
+          allowPrivilegeEscalation: false
         resources:
 {{- toYaml .Values.resources | indent 10 }}
       volumes:

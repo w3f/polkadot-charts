@@ -7,3 +7,8 @@
 {{- define "polkadot-deployer.custom-chainspec-configmap" -}}
 {{ .Chart.Name }}-custom-chainspec
 {{- end }}
+
+{{/* Returns the service account name */}}
+{{- define "polkadot-deployer.serviceAccount" -}}
+{{ .Chart.Name }}
+{{- end }}

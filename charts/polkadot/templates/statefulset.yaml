@@ -17,6 +17,7 @@ spec:
       labels:
         app: {{ .Release.Name }}
     spec:
+      serviceAccount: {{ include "polkadot-deployer.serviceAccount" . }}
       {{- if .Values.chainspec.custom }}
       initContainers:
       - name: {{ .Release.Name }}-init

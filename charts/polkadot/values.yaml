@@ -11,6 +11,8 @@ chainspec:
   createConfigmap: false
   path: "/chainspec/chainspec.json"
 
+createServiceAccount: false
+
 mainNode: false
 
 mainNodeID: QmRpheLN4JWdAnY7HGJfWFNbfkQCb6tFf4vvA6hgjMZKrR

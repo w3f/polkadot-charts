@@ -14,6 +14,11 @@
 {{- end }}
 
 {{/* Returns the certificate name */}}
-{{- define "polkadot-deployer.serviceAccount" -}}
+{{- define "polkadot-deployer.certificateName" -}}
+{{ .Chart.Name }}
+{{- end }}
+
+{{/* Returns the TLS secret name */}}
+{{- define "polkadot-deployer.tlsSecretName" -}}
 {{ .Chart.Name }}
 {{- end }}

@@ -1,9 +1,9 @@
-{{ if .Values.externalAccess }}
+{{ if .Values.externalAccess -}}
 apiVersion: certmanager.k8s.io/v1alpha1
 kind: Certificate
 metadata:
   name: {{ include "polkadot-deployer.certificateName" . }}
-  namespace: default
+  namespace: {{ .Values.namespace }}
 spec:
   secretName: {{ include "polkadot-deployer.tlsSecretName" . }}
   issuerRef:
@@ -16,4 +16,4 @@ spec:
         provider: prod-dns
       domains:
       - *.{{ .Values.domain }}
-{{ end }}
+{{ end -}}

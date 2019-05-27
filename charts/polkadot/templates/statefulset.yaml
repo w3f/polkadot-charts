@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: {{ .Release.Name }}
+  namespace: {{ .Values.namespace }}
   labels:
     node: {{ .Release.Name }}
     app: {{ .Chart.Name }}

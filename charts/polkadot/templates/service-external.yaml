@@ -3,6 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ .Chart.Name }}
+  namespace: {{ .Values.namespace }}
   labels:
     app: {{ .Chart.Name }}
 spec:

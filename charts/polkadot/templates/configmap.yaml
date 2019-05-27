@@ -3,6 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ include "polkadot-deployer.custom-chainspec-configmap" . }}
+  namespace: {{ .Values.namespace }}
 data:
   custom_chainspec.json: |-
     {{- $totalItems := len .Values.chainspec.keys.stash }}

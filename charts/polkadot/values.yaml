@@ -6,6 +6,8 @@ initImage:
   repo: web3f/polkadot-deployer
   tag: latest
 
+namespace: polkadot
+
 chainspec:
   custom: true
   createConfigmap: false

@@ -1,0 +1,23 @@
+{{ if .Values.externalAccess -}}
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Issuer
+metadata:
+  name: letsencrypt
+  namespace: {{ .Values.namespace }}
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: devops@web3.foundation
+
+    privateKeySecretRef:
+      name: letsencrypt
+
+    dns01:
+      providers:
+        - name: prod-dns
+          cloudflare:
+            email: cloudflare@web3.foundation
+            apiKeySecretRef:
+              name: cloudflare-credentials
+              key: api-key
+{{ end -}}

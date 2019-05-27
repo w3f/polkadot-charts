@@ -19,6 +19,7 @@ mainNode: false
 
 mainNodeID: QmRpheLN4JWdAnY7HGJfWFNbfkQCb6tFf4vvA6hgjMZKrR
 nodeKey: "0000000000000000000000000000000000000000000000000000000000000001"
+key: "my-session-key"
 
 validator: true
 

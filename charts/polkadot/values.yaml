@@ -17,6 +17,8 @@ createServiceAccount: false
 externalAccess: false
 domain: polkadot.w3f.tech
 
+createNamespace: false
+
 mainNode: false
 
 mainNodeID: QmRpheLN4JWdAnY7HGJfWFNbfkQCb6tFf4vvA6hgjMZKrR

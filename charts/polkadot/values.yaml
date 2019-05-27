@@ -6,7 +6,7 @@ initImage:
   repo: web3f/polkadot-deployer
   tag: latest
 
-namespace: polkadot
+namespace: default
 
 chainspec:
   custom: true
@@ -17,7 +17,6 @@ createServiceAccount: false
 externalAccess: false
 domain: polkadot.w3f.tech
 
-createNamespace: false
 createNetworkPolicy: false
 createPodSecurityPolicy: false
 

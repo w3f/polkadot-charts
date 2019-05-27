@@ -32,3 +32,8 @@
 {{- define "polkadot-deployer.nodeKey" -}}
 {{ .Release.Name }}-node-key
 {{- end }}
+
+{{/* Returns the PSP name */}}
+{{- define "polkadot-deployer.podSecurityPolicyName" -}}
+{{ .Chart.Name }}
+{{- end }}

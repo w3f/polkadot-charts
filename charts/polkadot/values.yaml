@@ -19,6 +19,7 @@ domain: polkadot.w3f.tech
 
 createNamespace: false
 createNetworkPolicy: false
+createPodSecurityPolicy: false
 
 mainNode: false
 

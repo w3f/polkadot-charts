@@ -18,6 +18,7 @@ externalAccess: false
 domain: polkadot.w3f.tech
 
 createNamespace: false
+createNetworkPolicy: false
 
 mainNode: false
 

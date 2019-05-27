@@ -22,3 +22,13 @@
 {{- define "polkadot-deployer.tlsSecretName" -}}
 {{ .Chart.Name }}
 {{- end }}
+
+{{/* Returns the session key secret name */}}
+{{- define "polkadot-deployer.sessionKey" -}}
+{{ .Release.Name }}-session-key
+{{- end }}
+
+{{/* Returns the node key secret name */}}
+{{- define "polkadot-deployer.nodeKey" -}}
+{{ .Release.Name }}-node-key
+{{- end }}

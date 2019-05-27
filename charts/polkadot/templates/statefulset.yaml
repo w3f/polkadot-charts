@@ -46,20 +46,23 @@ spec:
       - name: {{ .Release.Name }}
         image: {{ .Values.image.repo }}:{{ .Values.image.tag }}
         imagePullPolicy: IfNotPresent
+        command: ["/bin/sh"]
         args:
-        - --chain={{ .Values.chainspec.path }}
-        - --name={{ .Values.name }}
-        - -d=/data
-        - --rpc-external
-        - --ws-external
-        - --key={{ .Values.key }}
+        - -c
+        - exec /usr/local/bin/substrate
+          --chain={{ .Values.chainspec.path }}
+          --name={{ .Values.name }}
+          -d=/data
+          --rpc-external
+          --ws-external
+          --key=$(cat /etc/polkadot/session-key)
         {{- if .Values.validator }}
-        - --validator
+          --validator
         {{- end }}
         {{- if .Values.mainNode }}
-        - --node-key={{ .Values.nodeKey }}
+          --node-key=$(cat /etc/polkadot/node-key)
         {{- else }}
-        - --bootnodes={{ include "polkadot-deployer.bootnodes" . }}
+          --bootnodes={{ include "polkadot-deployer.bootnodes" . }}
         {{- end }}
         ports:
         - containerPort: 30333
@@ -85,11 +88,35 @@ spec:
           mountPath: /data
         - name: chainspec
           mountPath: /chainspec
+        - name: session-key
+          mountPath: /etc/polkadot/session-key
+          subPath: session-key
+        {{ if .Values.mainNode -}}
+        - name: node-key
+          mountPath: /etc/polkadot/node-key
+          subPath: node-key
+        {{ end -}}
         securityContext:
           allowPrivilegeEscalation: false
         resources:
 {{- toYaml .Values.resources | indent 10 }}
       volumes:
+      - name: session-key
+        secret:
+          secretName: {{ include "polkadot-deployer.sessionKey" . }}
+          defaultMode: 256
+          items:
+          - key: session-key
+            path: session-key
+      {{ if .Values.mainNode -}}
+      - name: node-key
+        secret:
+          secretName: {{ include "polkadot-deployer.nodeKey" . }}
+          defaultMode: 256
+          items:
+          - key: node-key
+            path: node-key
+      {{ end -}}
       - name: custom-chainspec
         configMap:
           name: {{ include "polkadot-deployer.custom-chainspec-configmap" . }}

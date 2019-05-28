@@ -61,6 +61,7 @@ spec:
           --validator
         {{- end }}
         {{- if .Values.mainNode }}
+          --node-key-type=secp256k1
           --node-key=$(cat /etc/polkadot/node-key)
         {{- else }}
           --bootnodes={{ include "polkadot-deployer.bootnodes" . }}

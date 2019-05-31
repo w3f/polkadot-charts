@@ -9,9 +9,5 @@ spec:
   ports:
   - port: 30333
     name: p2p
-  - port: 9933
-    name: http-rpc
-  - port: 9944
-    name: websocket-rpc
   selector:
     node: {{ .Release.Name }}

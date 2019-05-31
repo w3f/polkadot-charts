@@ -8,8 +8,9 @@ metadata:
     app: {{ .Chart.Name }}
 spec:
   ports:
-  - port: 80
-    targetPort: websocket-rpc
+  - name: websocket-rpc
+    port: 9944
+    protocol: TCP
   selector:
-    app: {{ .Chart.Name }}
+    node: polkadot-node-0
 {{ end -}}

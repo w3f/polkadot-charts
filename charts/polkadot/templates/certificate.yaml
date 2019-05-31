@@ -9,11 +9,11 @@ spec:
   issuerRef:
     name: letsencrypt
   dnsNames:
-  - *.{{ .Values.domain }}
+  - {{ include "polkadot-deployer.websocketsDomain" . }}
   acme:
     config:
     - dns01:
         provider: prod-dns
       domains:
-      - *.{{ .Values.domain }}
+      - {{ include "polkadot-deployer.websocketsDomain" . }}
 {{ end -}}

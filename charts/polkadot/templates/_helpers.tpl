@@ -40,5 +40,5 @@
 
 {{/* Returns the websockets domain */}}
 {{- define "polkadot-deployer.websocketsDomain" -}}
-wss.{{ .Values.domain }}
+{{ .Values.domain }}
 {{- end }}

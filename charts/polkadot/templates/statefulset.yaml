@@ -95,7 +95,7 @@ spec:
         securityContext:
           allowPrivilegeEscalation: false
         resources:
-{{- toYaml .Values.resources | indent 10 }}
+{{ toYaml .Values.resources | indent 10 }}
       volumes:
       - name: session-key
         secret:

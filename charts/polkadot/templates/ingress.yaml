@@ -8,19 +8,19 @@ metadata:
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/limit-rps: "10"
     nginx.ingress.kubernetes.io/affinity: "cookie"
-    nginx.ingress.kubernetes.io/session-cookie-max-age: 172800
-    nginx.ingress.kubernetes.io/session-cookie-expires: 172800
+    nginx.ingress.kubernetes.io/session-cookie-max-age: "172800"
+    nginx.ingress.kubernetes.io/session-cookie-expires: "172800"
 spec:
   tls:
   - hosts:
-      - {{ .Values.domain }}
+      - {{ include "polkadot-deployer.websocketsDomain" . }}
     secretName: {{ include "polkadot-deployer.tlsSecretName" . }}
   rules:
-  - host: {{ .Values.domain }}
+  - host: {{ include "polkadot-deployer.websocketsDomain" . }}
     http:
       paths:
       - path: /
         backend:
-          serviceName: {{ include "polkadot-deployer.tlsSecretName" . }}
+          serviceName: {{ .Chart.Name }}
           servicePort: 80
 {{ end -}}

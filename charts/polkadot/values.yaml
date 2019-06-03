@@ -13,12 +13,17 @@ namespace: default
 chainspec:
   custom: true
   path: "/chainspec/chainspec.json"
+  keys:
+    session: ["session_key_1", "session_key2"]
+    stash: ["stash_key_1", "stash_key2"]
+    controller: ["controller_key_1", "controller_key2"]
 
 key: "session_key"
 mainNodeID: QmRpheLN4JWdAnY7HGJfWFNbfkQCb6tFf4vvA6hgjMZKrR
 nodeKey: "0000000000000000000000000000000000000000000000000000000000000001"
 
 createBootnodeService: false
+createConfigMap: false
 
 validator: true
 

@@ -1,3 +1,4 @@
+{{ if not .Values.local -}}
 apiVersion: certmanager.k8s.io/v1alpha1
 kind: Certificate
 metadata:
@@ -15,3 +16,4 @@ spec:
         provider: prod-dns
       domains:
       - {{ include "polkadot-deployer.websocketsDomain" . }}
+{{ end }}

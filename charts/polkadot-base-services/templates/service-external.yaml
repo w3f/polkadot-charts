@@ -1,7 +1,8 @@
+{{ if not .Values.local -}}
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Chart.Name }}
+  name: {{ include "polkadot-deployer.websocketService" . }}
   namespace: {{ .Values.namespace }}
   labels:
     app: {{ .Chart.Name }}
@@ -12,3 +13,4 @@ spec:
     protocol: TCP
   selector:
     node: polkadot-node-0
+{{ end }}

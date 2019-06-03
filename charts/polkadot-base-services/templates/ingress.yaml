@@ -1,3 +1,4 @@
+{{ if not .Values.local -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -19,5 +20,6 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: {{ .Chart.Name }}
+          serviceName: {{ include "polkadot-deployer.websocketService" . }}
           servicePort: 9944
+{{ end }}

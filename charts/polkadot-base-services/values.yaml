@@ -15,3 +15,5 @@ chainspec:
 
 cloudflareApiKey: "my_cloudflare_api_key"
 cloudflareEmail: "my_cloudflare_email"
+
+local: false

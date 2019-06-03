@@ -5,22 +5,22 @@
 
 {{/* Returns custom-chainspec configmap name */}}
 {{- define "polkadot-deployer.custom-chainspec-configmap" -}}
-{{ .Chart.Name }}-custom-chainspec
+polkadot-custom-chainspec
 {{- end }}
 
 {{/* Returns the service account name */}}
 {{- define "polkadot-deployer.serviceAccount" -}}
-{{ .Chart.Name }}
+polkadot
 {{- end }}
 
 {{/* Returns the certificate name */}}
 {{- define "polkadot-deployer.certificateName" -}}
-{{ .Chart.Name }}
+polkadot
 {{- end }}
 
 {{/* Returns the TLS secret name */}}
 {{- define "polkadot-deployer.tlsSecretName" -}}
-{{ .Chart.Name }}
+polkadot
 {{- end }}
 
 {{/* Returns the session key secret name */}}
@@ -35,10 +35,15 @@
 
 {{/* Returns the PSP name */}}
 {{- define "polkadot-deployer.podSecurityPolicyName" -}}
-{{ .Chart.Name }}
+polkadot
 {{- end }}
 
 {{/* Returns the websockets domain */}}
 {{- define "polkadot-deployer.websocketsDomain" -}}
 {{ .Values.domain }}
+{{- end }}
+
+{{/* Returns the external websockets service name */}}
+{{- define "polkadot-deployer.websocketService" -}}
+polkadot-external-websockets
 {{- end }}

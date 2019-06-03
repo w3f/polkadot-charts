@@ -1,3 +1,4 @@
+{{ if .Values.createBootnodeService -}}
 apiVersion: v1
 kind: Service
 metadata:
@@ -11,3 +12,4 @@ spec:
     name: p2p
   selector:
     node: {{ .Release.Name }}
+{{ end }}

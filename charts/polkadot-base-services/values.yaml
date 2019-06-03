@@ -9,9 +9,9 @@ key: "my-session-key"
 
 chainspec:
   keys:
-    session: []
-    stash: []
-    controller: []
+    session: ["session_key_1", "session_key2"]
+    stash: ["stash_key_1", "stash_key2"]
+    controller: ["controller_key_1", "controller_key2"]
 
 cloudflareApiKey: "my_cloudflare_api_key"
 cloudflareEmail: "my_cloudflare_email"

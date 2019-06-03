@@ -6,23 +6,16 @@ initImage:
   repo: web3f/polkadot-deployer
   tag: latest
 
+name: testnet
+
 namespace: default
 
 chainspec:
   custom: true
-  createConfigmap: false
   path: "/chainspec/chainspec.json"
-
-createServiceAccount: false
-externalAccess: false
-domain: polkadot.w3f.tech
-
-createNetworkPolicy: false
-createPodSecurityPolicy: false
 
 mainNodeID: QmRpheLN4JWdAnY7HGJfWFNbfkQCb6tFf4vvA6hgjMZKrR
 nodeKey: "0000000000000000000000000000000000000000000000000000000000000001"
-key: "my-session-key"
 
 validator: true
 

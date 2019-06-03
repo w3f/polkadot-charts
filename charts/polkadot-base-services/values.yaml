@@ -1,0 +1,17 @@
+name: testnet
+
+namespace: default
+
+domain: polkadot.w3f.tech
+
+nodeKey: "0000000000000000000000000000000000000000000000000000000000000001"
+key: "my-session-key"
+
+chainspec:
+  keys:
+    session: []
+    stash: []
+    controller: []
+
+cloudflareApiKey: "my_cloudflare_api_key"
+cloudflareEmail: "my_cloudflare_email"

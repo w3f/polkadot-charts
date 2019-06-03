@@ -1,4 +1,3 @@
-{{ if .Values.createPodSecurityPolicy -}}
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
@@ -44,4 +43,3 @@ spec:
     - min: 1
       max: 65535
   readOnlyRootFilesystem: false
-{{ end -}}

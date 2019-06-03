@@ -1,4 +1,3 @@
-{{ if .Values.externalAccess -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -22,4 +21,3 @@ spec:
         backend:
           serviceName: {{ .Chart.Name }}
           servicePort: 9944
-{{ end -}}

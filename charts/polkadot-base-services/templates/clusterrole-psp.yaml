@@ -1,4 +1,3 @@
-{{ if .Values.createPodSecurityPolicy -}}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -9,4 +8,3 @@ rules:
   verbs:     ['use']
   resourceNames:
   - {{ template "polkadot-deployer.podSecurityPolicyName" . }}
-{{ end -}}

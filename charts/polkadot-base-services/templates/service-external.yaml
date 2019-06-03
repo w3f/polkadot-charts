@@ -1,4 +1,3 @@
-{{ if .Values.externalAccess }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -13,4 +12,3 @@ spec:
     protocol: TCP
   selector:
     node: polkadot-node-0
-{{ end -}}

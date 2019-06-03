@@ -33,6 +33,11 @@
 {{ .Release.Name }}-node-key
 {{- end }}
 
+{{/* Returns the PSP name */}}
+{{- define "polkadot-deployer.podSecurityPolicyName" -}}
+{{ .Chart.Name }}
+{{- end }}
+
 {{/* Returns the websockets domain */}}
 {{- define "polkadot-deployer.websocketsDomain" -}}
 {{ .Values.domain }}

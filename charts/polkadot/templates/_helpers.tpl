@@ -1,5 +1,8 @@
 {{/* Generates bootnodes string */}}
 {{- define "polkadot-deployer.bootnodes" -}}
+{{ if .Values.bootNodes -}}
+{{ .Values.bootNodes }}
+{{ else -}}
 /dns4/polkadot-node-0/tcp/30333/p2p/{{ .Values.mainNodeID }}
 {{- end }}
 

@@ -47,3 +47,13 @@ polkadot
 {{- define "polkadot-deployer.websocketService" -}}
 polkadot-external-websockets
 {{- end }}
+
+{{/* Returns the p2p domain */}}
+{{- define "polkadot-deployer.p2pDomain" -}}
+p2p.{{ .Values.domain }}
+{{- end }}
+
+{{/* Returns the external p2p service name */}}
+{{- define "polkadot-deployer.p2pService" -}}
+polkadot-external-p2p
+{{- end }}

@@ -1,0 +1,15 @@
+{{ if not .Values.local -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "polkadot-deployer.p2pService" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Chart.Name }}
+spec:
+  ports:
+  - port: 30333
+    name: p2p
+  selector:
+    node: polkadot-node-0
+{{ end }}

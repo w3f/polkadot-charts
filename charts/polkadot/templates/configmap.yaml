@@ -9,8 +9,8 @@ data:
     {{- $totalItems := len .Values.chainspec.keys.stash }}
     {{- $lastIndex := sub $totalItems 1 }}
     {
-      "name": {{ .Values.name | quote }},
-      "id": {{ .Values.name | quote }},
+      "name": {{ .Values.deploymentName | quote }},
+      "id": {{ .Values.deploymentName | quote }},
       "protocolId": "dot",
       "genesis": {
         "runtime": {

@@ -6,7 +6,8 @@ initImage:
   repo: web3f/polkadot-deployer
   tag: latest
 
-name: testnet
+name: testnet-0
+deploymentName: testnet
 
 namespace: default
 

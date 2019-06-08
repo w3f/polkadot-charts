@@ -58,7 +58,7 @@ spec:
           --ws-external
           --key=$(cat /etc/polkadot/session-key)
           --node-key=$(cat /etc/polkadot/node-key)
-          --bootnodes={{ include "polkadot-deployer.bootnodes" . }}
+          {{ include "polkadot-deployer.bootnodes" . }}
         {{- if .Values.validator }}
           --validator
         {{- end }}

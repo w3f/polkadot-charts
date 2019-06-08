@@ -1,6 +1,6 @@
 {{/* Generates bootnodes string */}}
 {{- define "polkadot-deployer.bootnodes" -}}
-{{- range .Values.bootNodes }}--bootnode={{ . }} {{ end -}}
+{{- range .Values.bootNodes }}--bootnodes={{ . }} {{ end -}}
 {{- end }}
 
 {{/* Returns custom-chainspec configmap name */}}

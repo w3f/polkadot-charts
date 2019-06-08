@@ -12,4 +12,5 @@ spec:
     name: p2p
   selector:
     node: polkadot-node-0
+  type: LoadBalancer
 {{ end }}

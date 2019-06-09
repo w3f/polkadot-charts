@@ -14,6 +14,9 @@ data:
       "protocolId": "dot",
       "genesis": {
         "runtime": {
+          "timestamp": {
+            "minimumPeriod": 3
+            },
           "consensus": {
             "authorities": [
               {{- range $index, $value := .Values.chainspec.keys.session }}

@@ -26,6 +26,10 @@ spec:
         runAsUser: 1000
         fsGroup: 1000
         runAsNonRoot: true
+      dnsPolicy: "None"
+      dnsConfig:
+        nameservers:
+{{ toYaml .Values.dnsNameservers | indent 8 -}}
       {{- if .Values.chainspec.custom }}
       initContainers:
       - name: {{ .Release.Name }}-init

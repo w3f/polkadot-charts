@@ -42,3 +42,8 @@ persistence:
   chainspecSize: 10Mi
   storageClassName: standard
   accessModes: [ "ReadWriteOnce" ]
+
+dnsNameservers:
+- 173.245.58.93
+- 173.245.59.247
+- 8.8.8.8

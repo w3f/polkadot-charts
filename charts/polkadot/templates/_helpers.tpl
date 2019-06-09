@@ -47,3 +47,8 @@ polkadot
 {{- define "polkadot-deployer.websocketService" -}}
 polkadot-external-websockets
 {{- end }}
+
+{{/* Returns the telemetry parameter content */}}
+{{- define "polkadot-deployer.telemetry" -}}
+{{- if .Values.telemetry }}--telemetry-url={{ .Values.telemetry }} {{ end -}}
+{{- end }}

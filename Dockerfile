@@ -1,4 +1,4 @@
-FROM parity/substrate:2.0.0-f05cd69a0 AS substrate
+FROM parity/substrate:2.0.0-79dd9c830 AS substrate
 
 
 FROM ubuntu:18.04

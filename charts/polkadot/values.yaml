@@ -1,6 +1,6 @@
 image:
   repo: parity/substrate
-  tag: 2.0.0-f05cd69a0
+  tag: 2.0.0-79dd9c830
 
 initImage:
   repo: web3f/polkadot-deployer

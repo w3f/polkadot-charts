@@ -1,4 +1,4 @@
-{{ if not .Values.local -}}
+{{ if and (not .Values.local) (not .Values.benchmark) -}}
 apiVersion: v1
 kind: Service
 metadata:

@@ -15,7 +15,7 @@ data:
       "genesis": {
         "runtime": {
           "timestamp": {
-            "minimumPeriod": 3
+            "minimumPeriod": {{ .Values.chainspec.minimumPeriod | default 3 }}
           },
           "consensus": {
             "authorities": [

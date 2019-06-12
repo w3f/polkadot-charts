@@ -9,6 +9,7 @@ metadata:
   annotations:
     external-dns.alpha.kubernetes.io/hostname: {{ include "polkadot-deployer.p2pDomain" . }}.
 spec:
+  externalTrafficPolicy: Local
   ports:
   - port: 30333
     name: p2p

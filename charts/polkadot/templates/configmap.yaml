@@ -11,6 +11,7 @@ data:
     {
       "name": {{ .Values.deploymentName | quote }},
       "id": {{ .Values.deploymentName | quote }},
+      "bootNodes": [],
       "protocolId": "dot",
       "genesis": {
         "runtime": {

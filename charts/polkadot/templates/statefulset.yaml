@@ -60,6 +60,7 @@ spec:
           -d=/data
           --rpc-external
           --ws-external
+          --port {{ .Values.p2pPort }}
           --key=$(cat /etc/polkadot/session-key)
           --node-key=$(cat /etc/polkadot/node-key)
           {{ include "polkadot-deployer.bootnodes" . }}
@@ -67,7 +68,7 @@ spec:
           --validator
         {{- end }}
         ports:
-        - containerPort: 30333
+        - containerPort: {{ .Values.p2pPort }}
           name: p2p
         - containerPort: 9933
           name: http-rpc

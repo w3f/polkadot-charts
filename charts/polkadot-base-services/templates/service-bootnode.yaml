@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "polkadot-deployer.p2pService" . }}
+  name: {{ include "polkadot-deployer.externalBootNodeService" . }}
   namespace: {{ .Values.namespace }}
   labels:
     app: {{ .Chart.Name }}
@@ -11,7 +11,7 @@ metadata:
 spec:
   externalTrafficPolicy: Local
   ports:
-  - port: 30333
+  - port: {{ .Values.bootNodeP2PPort }}
     name: p2p
   selector:
     node: polkadot-node-0

@@ -53,7 +53,7 @@ polkadot-external-websockets
 p2p.{{ .Values.domain }}
 {{- end }}
 
-{{/* Returns the external p2p service name */}}
-{{- define "polkadot-deployer.p2pService" -}}
-polkadot-external-p2p
+{{/* Returns the external boot node service name */}}
+{{- define "polkadot-deployer.externalBootNodeService" -}}
+polkadot-external-bootnode
 {{- end }}

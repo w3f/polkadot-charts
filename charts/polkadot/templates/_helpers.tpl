@@ -52,3 +52,13 @@ polkadot-external-websockets
 {{- define "polkadot-deployer.telemetry" -}}
 {{- if .Values.telemetry }}--telemetry-url={{ .Values.telemetry }} {{ end -}}
 {{- end }}
+
+{{/* Returns the p2p service name */}}
+{{- define "polkadot-deployer.p2pService" -}}
+{{ .Release.Name }}-p2p
+{{- end }}
+
+{{/* Returns the bootnode service name */}}
+{{- define "polkadot-deployer.bootnodeService" -}}
+{{ .Release.Name }}-bootnode
+{{- end }}

@@ -46,6 +46,7 @@ persistence:
 dnsNameservers:
 - 173.245.58.93
 - 173.245.59.247
-- 8.8.8.8
 
 telemetry: ""
+
+p2pPort: 30333

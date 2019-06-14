@@ -29,7 +29,7 @@ bootNodes:
 createBootnodeService: false
 createConfigMap: false
 
-validator: false
+validator: true
 
 resources: {}
 #  requests:

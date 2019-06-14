@@ -62,3 +62,8 @@ polkadot-external-websockets
 {{- define "polkadot-deployer.bootnodeService" -}}
 {{ .Release.Name }}-bootnode
 {{- end }}
+
+{{/* Returns the complete path of the generated chainspec file */}}
+{{- define "polkadot-deployer.chainspecFullPath" -}}
+{{ .Values.chainspec.basePath }}/{{ .Values.chainspec.file }}
+{{- end }}

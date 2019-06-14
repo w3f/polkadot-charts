@@ -13,7 +13,8 @@ namespace: default
 
 chainspec:
   custom: true
-  path: "/chainspec/chainspec.json"
+  basePath: "/chainspec"
+  file: "chainspec.json"
   keys:
     session: ["session_key_1", "session_key2"]
     stash: ["stash_key_1", "stash_key2"]

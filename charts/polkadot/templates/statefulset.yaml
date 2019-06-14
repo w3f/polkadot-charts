@@ -37,10 +37,10 @@ spec:
         command:
         - /app/merge_chainspec.sh
         - /app/custom_chainspec.json
-        - {{ .Values.chainspec.path }}
+        - {{ include "polkadot-deployer.chainspecFullPath" . }}
         volumeMounts:
         - name: chainspec
-          mountPath: /chainspec
+          mountPath: {{ .Values.chainspec.basePath }}
         - name: custom-chainspec
           mountPath: /app/custom_chainspec.json
           subPath: custom_chainspec.json
@@ -55,7 +55,7 @@ spec:
         args:
         - -c
         - exec /usr/local/bin/substrate
-          --chain={{ .Values.chainspec.path }}
+          --chain={{ include "polkadot-deployer.chainspecFullPath" . }}
           --name={{ .Values.name }}
           -d=/data
           --rpc-external
@@ -90,7 +90,7 @@ spec:
         - name: data
           mountPath: /data
         - name: chainspec
-          mountPath: /chainspec
+          mountPath: {{ .Values.chainspec.basePath }}
         - name: session-key
           mountPath: /etc/polkadot/session-key
           subPath: session-key

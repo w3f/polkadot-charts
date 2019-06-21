@@ -1,0 +1,23 @@
+{{ if and (not .Values.local) (not .Values.benchmark) -}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ .Chart.Name }}-grafana
+  namespace: {{ .Values.namespace }}
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/limit-rps: "10"
+spec:
+  tls:
+  - hosts:
+      - {{ include "polkadot-deployer.grafanaDomain" . }}
+    secretName: {{ include "polkadot-deployer.tlsSecretName" . }}
+  rules:
+  - host: {{ include "polkadot-deployer.grafanaDomain" . }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: grafana
+          servicePort: 80
+{{ end }}

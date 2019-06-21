@@ -16,7 +16,7 @@ spec:
       providers:
         - name: prod-dns
           cloudflare:
-            email: cloudflare@web3.foundation
+            email: {{ .Values.cloudflareEmail }}
             apiKeySecretRef:
               name: cloudflare-credentials
               key: api-key

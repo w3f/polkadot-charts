@@ -48,6 +48,11 @@ polkadot-external-websockets
 p2p.{{ .Values.domain }}
 {{- end }}
 
+{{/* Returns the grafana domain */}}
+{{- define "polkadot-deployer.grafanaDomain" -}}
+grafana.{{ .Values.domain }}
+{{- end }}
+
 {{/* Returns the external boot node service name */}}
 {{- define "polkadot-deployer.externalBootNodeService" -}}
 polkadot-external-bootnode

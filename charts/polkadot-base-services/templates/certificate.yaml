@@ -10,10 +10,12 @@ spec:
     name: letsencrypt
   dnsNames:
   - {{ include "polkadot-deployer.websocketsDomain" . }}
+  - {{ include "polkadot-deployer.grafanaDomain" . }}
   acme:
     config:
     - dns01:
         provider: prod-dns
       domains:
       - {{ include "polkadot-deployer.websocketsDomain" . }}
+      - {{ include "polkadot-deployer.grafanaDomain" . }}
 {{ end }}

@@ -1,0 +1,7 @@
+local: false
+
+namespace: default
+
+cloudflareApiKey: "my_cloudflare_api_key"
+
+grafanaPassword: "my_grafana_password"

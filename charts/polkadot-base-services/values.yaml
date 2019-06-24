@@ -12,3 +12,5 @@ cloudflareEmail: "my_cloudflare_email"
 local: false
 
 bootNodeP2PPort: 30333
+
+monitoring: true

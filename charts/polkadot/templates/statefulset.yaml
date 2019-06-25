@@ -67,6 +67,9 @@ spec:
           --validator
           --key=$(cat /etc/polkadot/session-key)
         {{- end }}
+        {{- if .Values.telemetry }}
+          --telemetry-url {{ .Values.telemetry }}
+        {{- end }}
         ports:
         - containerPort: {{ .Values.p2pPort }}
           name: p2p

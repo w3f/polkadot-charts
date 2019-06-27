@@ -13,4 +13,4 @@ local: false
 
 bootNodeP2PPort: 30333
 
-monitoring: true
+monitoring: false

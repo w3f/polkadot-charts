@@ -31,7 +31,7 @@ spec:
         runbook_url: https://github.com/kubernetes-monitoring/kubernetes-mixin/tree/master/runbook.md#alert-name-kubepersistentvolumefullinfourdays
       expr: |
         kubelet_volume_stats_available_bytes{job="kubelet"} and predict_linear(kubelet_volume_stats_available_bytes{job="kubelet"}[6h], 4 * 24 * 3600) < 0
-      for: 5m
+      for: 20m
       labels:
         severity: critical
 {{ end }}

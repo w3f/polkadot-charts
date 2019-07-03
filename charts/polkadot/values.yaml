@@ -39,7 +39,7 @@ resources: {}
 persistence:
   enabled: false
   dataSize: 32Gi
-  chainspecSize: 10Mi
+  chainspecSize: 1Gi
   accessModes: [ "ReadWriteOnce" ]
 
 dnsNameservers:

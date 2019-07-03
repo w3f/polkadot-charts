@@ -133,7 +133,6 @@ spec:
       name: data
     spec:
       accessModes: {{ .Values.persistence.accessModes }}
-      storageClassName: {{ .Values.persistence.storageClassName }}
       resources:
         requests:
           storage: {{ .Values.persistence.dataSize }}
@@ -141,7 +140,6 @@ spec:
       name: chainspec
     spec:
       accessModes: {{ .Values.persistence.accessModes }}
-      storageClassName: {{ .Values.persistence.storageClassName }}
       resources:
         requests:
           storage: {{ .Values.persistence.chainspecSize }}

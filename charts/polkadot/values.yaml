@@ -1,10 +1,10 @@
 image:
-  repo: parity/substrate
-  tag: 2.0.0-79dd9c830
+  repo: web3f/polkadot
+  tag: k4a
 
 initImage:
   repo: web3f/polkadot-deployer
-  tag: f1cd64f0838646f1c295c7973ca1b9089df31be7
+  tag: dc4ae85c21bdb25d3cd5cdcbe54af0a339c56ca7
 
 name: testnet-0
 deploymentName: testnet

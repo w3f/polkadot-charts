@@ -29,7 +29,7 @@ spec:
       dnsPolicy: "None"
       dnsConfig:
         nameservers:
-{{ toYaml .Values.dnsNameservers | indent 8 -}}
+{{ toYaml .Values.dnsNameservers | indent 8 }}
       initContainers:
       - name: {{ .Release.Name }}-init
         image: {{ .Values.initImage.repo }}:{{ .Values.initImage.tag }}
@@ -37,7 +37,7 @@ spec:
         {{- if .Values.chainspec.custom }}
         - /app/merge_chainspec.sh
         - /app/custom_chainspec.json
-        {{ else }}
+        {{- else }}
         - cp
         - /app/default_chainspec.json
         {{- end }}

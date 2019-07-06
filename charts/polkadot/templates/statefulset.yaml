@@ -30,23 +30,28 @@ spec:
       dnsConfig:
         nameservers:
 {{ toYaml .Values.dnsNameservers | indent 8 -}}
-      {{- if .Values.chainspec.custom }}
       initContainers:
       - name: {{ .Release.Name }}-init
         image: {{ .Values.initImage.repo }}:{{ .Values.initImage.tag }}
         command:
+        {{- if .Values.chainspec.custom }}
         - /app/merge_chainspec.sh
         - /app/custom_chainspec.json
+        {{ else }}
+        - cp
+        - /app/default_chainspec.json
+        {{- end }}
         - {{ include "polkadot-deployer.chainspecFullPath" . }}
         volumeMounts:
         - name: chainspec
           mountPath: {{ .Values.chainspec.basePath }}
+        {{- if .Values.chainspec.custom }}
         - name: custom-chainspec
           mountPath: /app/custom_chainspec.json
           subPath: custom_chainspec.json
+        {{- end }}
         securityContext:
           allowPrivilegeEscalation: false
-      {{- end }}
       containers:
       - name: {{ .Release.Name }}
         image: {{ .Values.image.repo }}:{{ .Values.image.tag }}
@@ -119,9 +124,11 @@ spec:
           items:
           - key: node-key
             path: node-key
+      {{- if .Values.chainspec.custom }}
       - name: custom-chainspec
         configMap:
           name: {{ include "polkadot-deployer.custom-chainspec-configmap" . }}
+      {{- end }}
       {{- if not .Values.persistence.enabled }}
       - name: data
         emptyDir: {}

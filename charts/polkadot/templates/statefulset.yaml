@@ -57,7 +57,7 @@ spec:
         - exec /usr/local/bin/polkadot
           --chain={{ include "polkadot-deployer.chainspecFullPath" . }}
           --name={{ .Values.name }}
-          -d=/data
+          -d=/polkadot
           --rpc-external
           --ws-external
           --port {{ .Values.p2pPort }}

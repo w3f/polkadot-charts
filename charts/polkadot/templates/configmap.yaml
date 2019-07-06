@@ -18,7 +18,7 @@ data:
           "timestamp": {
             "minimumPeriod": {{ .Values.chainspec.minimumPeriod | default 3 }}
           },
-          "consensus": {
+          "aura": {
             "authorities": [
               {{- range $index, $value := .Values.chainspec.keys.session }}
               {{ $value | quote }}{{- if ne $index $lastIndex }},{{- end }}
@@ -53,7 +53,10 @@ data:
               {{- range $index, $value := .Values.chainspec.keys.controller }}
               [
                 {{ $value | quote }},
-                {{ index $sessionKeys $index | quote }}
+                [
+                  {{ index $sessionKeys $index | quote }},
+                  {{ index $sessionKeys $index | quote }}
+                ]
               ]{{- if ne $index $lastIndex }},{{- end }}
               {{- end }}
             ]

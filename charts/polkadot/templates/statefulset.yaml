@@ -64,6 +64,7 @@ spec:
           --name={{ .Values.name }}
           -d=/polkadot
           --rpc-external
+          --rpc-cors all
           --ws-external
           --port {{ .Values.p2pPort }}
           --node-key=$(cat /etc/polkadot/node-key)

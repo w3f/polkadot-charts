@@ -43,20 +43,14 @@ data:
             ]
           },
           "session": {
-            "validators": [
-              {{- range $index, $value := .Values.chainspec.keys.controller }}
-              {{ $value | quote }}{{- if ne $index $lastIndex }},{{- end }}
-              {{- end }}
-            ],
             "keys": [
               {{- $sessionKeys := .Values.chainspec.keys.session }}
               {{- range $index, $value := .Values.chainspec.keys.controller }}
               [
                 {{ $value | quote }},
-                [
-                  {{ index $sessionKeys $index | quote }},
-                  {{ index $sessionKeys $index | quote }}
-                ]
+                {
+                  "ed25519": {{ index $sessionKeys $index | quote }}
+                }
               ]{{- if ne $index $lastIndex }},{{- end }}
               {{- end }}
             ]

@@ -45,7 +45,7 @@ data:
           "session": {
             "keys": [
               {{- $sessionKeys := .Values.chainspec.keys.session }}
-              {{- range $index, $value := .Values.chainspec.keys.controller }}
+              {{- range $index, $value := .Values.chainspec.keys.stash }}
               [
                 {{ $value | quote }},
                 {
@@ -58,7 +58,7 @@ data:
           "staking": {
             "validatorCount": {{ $totalItems }},
             "invulnerables": [
-              {{- range $index, $value := .Values.chainspec.keys.controller }}
+              {{- range $index, $value := .Values.chainspec.keys.stash }}
               {{ $value | quote }}{{- if ne $index $lastIndex }},{{- end }}
               {{- end }}
             ],

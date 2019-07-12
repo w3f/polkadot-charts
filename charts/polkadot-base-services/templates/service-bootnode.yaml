@@ -8,7 +8,6 @@ metadata:
     app: {{ .Chart.Name }}
   annotations:
     external-dns.alpha.kubernetes.io/hostname: {{ include "polkadot-deployer.p2pDomain" . }}.
-    service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: 3600
 spec:
   externalTrafficPolicy: Local
   ports:

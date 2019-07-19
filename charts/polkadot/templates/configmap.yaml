@@ -81,16 +81,6 @@ data:
               {{- end }}
             ]
           },
-          "councilSeats": {
-            "activeCouncil": [
-              {{- range $index, $value := .Values.chainspec.keys.stash }}
-              [
-                {{ $value | quote }},
-                1000000
-              ]{{- if ne $index $lastIndex }},{{- end }}
-              {{- end }}
-            ]
-          },
           "sudo": {
             "key": "{{ index .Values.chainspec.keys.controller 0 }}"
           }

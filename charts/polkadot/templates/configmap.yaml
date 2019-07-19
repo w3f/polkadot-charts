@@ -15,9 +15,6 @@ data:
       "protocolId": "dot",
       "genesis": {
         "runtime": {
-          "timestamp": {
-            "minimumPeriod": {{ .Values.chainspec.minimumPeriod | default 3 }}
-          },
           "aura": {
             "authorities": [
               {{- range $index, $value := .Values.chainspec.keys.session }}

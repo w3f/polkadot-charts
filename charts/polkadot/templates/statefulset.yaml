@@ -26,10 +26,12 @@ spec:
         runAsUser: 1000
         fsGroup: 1000
         runAsNonRoot: true
+      {{- if .Values.dnsNameservers }}
       dnsPolicy: "None"
       dnsConfig:
         nameservers:
 {{ toYaml .Values.dnsNameservers | indent 8 }}
+      {{ end }}
       initContainers:
       - name: {{ .Release.Name }}-init
         image: {{ .Values.initImage.repo }}:{{ .Values.initImage.tag }}

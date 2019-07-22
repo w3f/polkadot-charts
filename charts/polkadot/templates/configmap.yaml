@@ -11,7 +11,12 @@ data:
     {
       "name": {{ .Values.deploymentName | quote }},
       "id": {{ .Values.deploymentName | quote }},
-      "bootNodes": [],
+      "bootNodes": [
+        {{- $lastBootIndex := sub (len .Values.bootNodes) 1}}
+        {{- range $index, $value := .Values.bootNodes }}
+        {{ $value | quote }}{{- if ne $index $lastBootIndex }},{{- end }}
+        {{- end }}
+      ],
       "protocolId": "dot",
       "genesis": {
         "runtime": {

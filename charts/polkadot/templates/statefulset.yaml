@@ -68,7 +68,6 @@ spec:
           --ws-external
           --port {{ .Values.p2pPort }}
           --node-key=$(cat /etc/polkadot/node-key)
-          {{ include "polkadot-deployer.bootnodes" . }}
         {{- if .Values.validator }}
           --validator
           --key=$(cat /etc/polkadot/session-key)

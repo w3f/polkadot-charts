@@ -82,3 +82,8 @@ polkadot-vpn
 {{- define "polkadot-deployer.vpnDomain" -}}
 vpn.{{ .Values.domain }}
 {{- end }}
+
+{{/* Returns the VPN container name */}}
+{{- define "polkadot-deployer.vpnContainerName" -}}
+polkadot-vpn-connector
+{{- end }}

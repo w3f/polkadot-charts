@@ -21,6 +21,7 @@ spec:
   - 'secret'
   - 'persistentVolumeClaim'
   - 'emptyDir'
+  - 'hostPath'
   hostNetwork: false
   hostIPC: false
   hostPID: false

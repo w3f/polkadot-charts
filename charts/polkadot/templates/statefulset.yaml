@@ -22,11 +22,13 @@ spec:
         app: {{ .Chart.Name }}
     spec:
       serviceAccount: {{ include "polkadot-deployer.serviceAccount" . }}
+      {{- if not .Values.vpn.enabled }}
       securityContext:
         runAsUser: 1000
         fsGroup: 1000
         runAsNonRoot: true
-      {{- if .Values.dnsNameservers }}
+      {{- end }}
+      {{- if and (.Values.dnsNameservers) (not .Values.vpn.enabled) }}
       dnsPolicy: "None"
       dnsConfig:
         nameservers:
@@ -112,7 +114,7 @@ spec:
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       {{- if .Values.vpn.enabled }}
-      - name: {{ include "polkadot-deployer.vpnCommonName" . }}
+      - name: {{ include "polkadot-deployer.vpnContainerName" . }}
         image: {{ .Values.vpn.image.repo }}:{{ .Values.vpn.image.tag }}
         imagePullPolicy: IfNotPresent
         ports:

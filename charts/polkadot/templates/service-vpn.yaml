@@ -6,10 +6,15 @@ metadata:
   namespace: {{ .Values.namespace }}
   labels:
     node: {{ .Release.Name }}
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: {{ include "polkadot-deployer.vpnDomain" . }}.
 spec:
+  externalTrafficPolicy: Local
   ports:
-  - port: {{ .Values.vpn.port }}
+  - port: 80
     name: vpn
+    nodePort: {{ .Values.vpn.port }}
   selector:
     node: {{ .Release.Name }}
+  type: LoadBalancer
 {{- end }}

@@ -67,3 +67,13 @@ polkadot-external-websockets
 {{- define "polkadot-deployer.chainspecFullPath" -}}
 {{ .Values.chainspec.basePath }}/{{ .Values.chainspec.file }}
 {{- end }}
+
+{{/* Returns the name of the VPN secret */}}
+{{- define "polkadot-deployer.vpnSecret" -}}
+polkadot-vpn
+{{- end }}
+
+{{/* Returns the common name for VPN resources */}}
+{{- define "polkadot-deployer.vpnCommonName" -}}
+polkadot-vpn
+{{- end }}

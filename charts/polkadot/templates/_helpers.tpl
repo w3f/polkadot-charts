@@ -77,3 +77,8 @@ polkadot-vpn
 {{- define "polkadot-deployer.vpnCommonName" -}}
 polkadot-vpn
 {{- end }}
+
+{{/* Returns the VPN domain */}}
+{{- define "polkadot-deployer.vpnDomain" -}}
+vpn.{{ .Values.domain }}
+{{- end }}

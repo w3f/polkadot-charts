@@ -1,0 +1,19 @@
+{{- if .Values.vpn.enabled }}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ include "polkadot-deployer.vpnCommonName" . }}
+  namespace: {{ .Values.namespace }}
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/limit-rps: "10"
+spec:
+  rules:
+  - host: {{ include "polkadot-deployer.vpnDomain" . }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ include "polkadot-deployer.vpnCommonName" . }}
+          servicePort: {{ .Values.vpn.port }}
+{{ end }}

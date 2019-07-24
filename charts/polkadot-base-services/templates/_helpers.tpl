@@ -57,3 +57,13 @@ grafana.{{ .Values.domain }}
 {{- define "polkadot-deployer.externalBootNodeService" -}}
 polkadot-external-bootnode
 {{- end }}
+
+{{/* Returns the common name for VPN resources */}}
+{{- define "polkadot-deployer.vpnCommonName" -}}
+polkadot-vpn
+{{- end }}
+
+{{/* Returns the VPN domain */}}
+{{- define "polkadot-deployer.vpnDomain" -}}
+vpn.{{ .Values.domain }}
+{{- end }}

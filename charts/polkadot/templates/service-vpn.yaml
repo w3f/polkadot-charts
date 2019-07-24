@@ -1,0 +1,15 @@
+{{- if .Values.vpn.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "polkadot-deployer.vpnCommonName" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    node: {{ .Release.Name }}
+spec:
+  ports:
+  - port: {{ .Values.vpn.port }}
+    name: vpn
+  selector:
+    node: {{ .Release.Name }}
+{{- end }}

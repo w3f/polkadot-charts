@@ -111,6 +111,24 @@ spec:
           allowPrivilegeEscalation: false
         resources:
 {{ toYaml .Values.resources | indent 10 }}
+      {{- if .Values.vpn.enabled }}
+      - name: {{ include "polkadot-deployer.vpnCommonName" . }}
+        image: {{ .Values.vpn.image.repo }}:{{ .Values.vpn.image.tag }}
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: {{ .Values.vpn.port }}
+          name: vpn
+        volumeMounts:
+        - name: vpnconfig
+          mountPath: /etc/vpncloud
+        - name: dev-tun
+          mountPath: /dev/net/tun
+        securityContext:
+          capabilities:
+            add:
+            - NET_ADMIN
+          privileged: false
+      {{- end }}
       volumes:
       - name: session-key
         secret:
@@ -130,6 +148,15 @@ spec:
       - name: custom-chainspec
         configMap:
           name: {{ include "polkadot-deployer.custom-chainspec-configmap" . }}
+      {{- end }}
+      {{- if .Values.vpn.enabled }}
+      - name: vpnconfig
+        configMap:
+          name: {{ include "polkadot-deployer.vpnCommonName" . }}
+      - name: dev-tun
+        hostPath:
+          path: /dev/net/tun
+          type: CharDevice
       {{- end }}
       {{- if not .Values.persistence.enabled }}
       - name: data

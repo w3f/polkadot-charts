@@ -13,7 +13,7 @@ spec:
   ports:
   - port: 80
     name: vpn
-    nodePort: {{ .Values.vpn.port }}
+    targetPort: {{ .Values.vpn.port }}
   selector:
     node: {{ .Release.Name }}
   type: LoadBalancer

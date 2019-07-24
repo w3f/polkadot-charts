@@ -14,7 +14,3 @@ local: false
 bootNodeP2PPort: 30333
 
 monitoring: false
-
-vpn:
-  enabled: false
-  port: 3210

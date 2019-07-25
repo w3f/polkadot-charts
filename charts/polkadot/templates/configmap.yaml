@@ -22,7 +22,7 @@ data:
         "runtime": {
           "aura": {
             "authorities": [
-              {{- range $index, $value := .Values.chainspec.keys.stash }}
+              {{- range $index, $value := .Values.chainspec.keys.session }}
               {{ $value | quote }}{{- if ne $index $lastIndex }},{{- end }}
               {{- end }}
             ]

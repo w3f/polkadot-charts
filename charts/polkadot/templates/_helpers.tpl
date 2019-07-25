@@ -63,9 +63,13 @@ polkadot-external-websockets
 {{ .Release.Name }}-bootnode
 {{- end }}
 
-{{/* Returns the complete path of the generated chainspec file */}}
-{{- define "polkadot-deployer.chainspecFullPath" -}}
-{{ .Values.chainspec.basePath }}/{{ .Values.chainspec.file }}
+{{/* Returns the chainspec to use */}}
+{{- define "polkadot-deployer.chainspecName" -}}
+{{- if .Values.chainspec.preset -}}
+{{ .Values.chainspec.name }}
+{{- else -}}
+{{ .Values.chainspec.basePath }}/{{ .Values.chainspec.name }}
+{{- end -}}
 {{- end }}
 
 {{/* Returns the name of the VPN secret */}}

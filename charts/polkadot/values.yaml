@@ -12,9 +12,10 @@ deploymentName: testnet
 namespace: default
 
 chainspec:
+  preset: false
   custom: true
   basePath: "/chainspec"
-  file: "chainspec.json"
+  name: "chainspec.json"
   keys:
     session: ["session_key_1", "session_key2"]
     stash: ["stash_key_1", "stash_key2"]

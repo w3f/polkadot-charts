@@ -44,7 +44,7 @@ spec:
         - /app/custom_chainspec.json
         {{- else }}
         - cp
-        - /app/default_chainspec.json
+        - /app/{{ .Values.chainspec.name }}
         {{- end }}
         - {{ include "polkadot-deployer.chainspecName" . }}
         volumeMounts:

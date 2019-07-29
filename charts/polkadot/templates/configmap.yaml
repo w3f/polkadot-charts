@@ -18,6 +18,9 @@ data:
         {{- end }}
       ],
       "protocolId": "dot",
+      "properties": {
+        "tokenDecimals": 15
+      },
       "genesis": {
         "runtime": {
           "aura": {

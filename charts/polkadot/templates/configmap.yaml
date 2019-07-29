@@ -42,7 +42,7 @@ data:
               {{- range $index, $value := .Values.chainspec.keys.stash }}
               [
                 {{ $value | quote }},
-                1048576
+                1048576000000000000
               ]{{- if ne $index $lastIndex }},{{- end }}
               {{- end }}
             ]

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set +x
+
 RPC_ENDPOINT=${1}
 
 for key in /keys/*; do
@@ -8,7 +10,7 @@ for key in /keys/*; do
     KEY_SEED=$(cat "$key")
 
     case "$key" in
-        grandpa-session)
+        /keys/grandpa-session)
             KEY_TYPE=ed25
             break
             ;;
@@ -21,6 +23,7 @@ for key in /keys/*; do
     echo "key: $key"
     echo "KEY_SEED: $KEY_SEED"
     echo "KEY_TYPE: $KEY_TYPE"
+    echo '{ "jsonrpc":"2.0", "method":"author_insertKey", "params":["keyType": "'"${KEY_TYPE}"'", "suri": "'"${KEY_SEED}"'"],"id":1 }'
 
     curl -v -H "Content-Type: application/json" \
          --data '{ "jsonrpc":"2.0", "method":"author_insertKey", "params":["keyType": "'"${KEY_TYPE}"'", "suri": "'"${KEY_SEED}"'"],"id":1 }' \

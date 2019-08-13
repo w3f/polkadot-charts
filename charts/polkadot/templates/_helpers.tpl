@@ -38,11 +38,6 @@ polkadot
 polkadot
 {{- end }}
 
-{{/* Returns the websockets domain */}}
-{{- define "polkadot-deployer.websocketsDomain" -}}
-{{ .Values.domain }}
-{{- end }}
-
 {{/* Returns the external websockets service name */}}
 {{- define "polkadot-deployer.websocketService" -}}
 polkadot-external-websockets
@@ -70,24 +65,4 @@ polkadot-external-websockets
 {{- else -}}
 {{ .Values.chainspec.basePath }}/{{ .Values.chainspec.name }}
 {{- end -}}
-{{- end }}
-
-{{/* Returns the name of the VPN secret */}}
-{{- define "polkadot-deployer.vpnSecret" -}}
-polkadot-vpn
-{{- end }}
-
-{{/* Returns the common name for VPN resources */}}
-{{- define "polkadot-deployer.vpnCommonName" -}}
-polkadot-vpn
-{{- end }}
-
-{{/* Returns the VPN domain */}}
-{{- define "polkadot-deployer.vpnDomain" -}}
-vpn.{{ .Values.domain }}
-{{- end }}
-
-{{/* Returns the VPN container name */}}
-{{- define "polkadot-deployer.vpnContainerName" -}}
-polkadot-vpn-connector
 {{- end }}

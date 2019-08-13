@@ -50,17 +50,3 @@ dnsNameservers:
 telemetry: ""
 
 p2pPort: 30333
-
-vpn:
-  enable: false
-  port: 3210
-  secret: vpnsecret
-  cidr: 10.0.0.1/24
-  peers:
-  - peer1
-  - peer2
-  image:
-    repo: web3f/vpncloud
-    tag: v0.1.0
-
-domain: polkadot.w3f.tech

@@ -26,7 +26,10 @@ data:
           "babe": {
             "authorities": [
               {{- range $index, $value := .Values.chainspec.addresses.session_babe }}
-              {{ $value | quote }}{{- if ne $index $lastIndex }},{{- end }}
+              [
+                {{ $value | quote }},
+                1
+              ]{{- if ne $index $lastIndex }},{{- end }}
               {{- end }}
             ]
           },

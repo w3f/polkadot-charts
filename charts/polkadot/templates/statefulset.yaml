@@ -74,7 +74,6 @@ spec:
           --node-key=$(cat /etc/polkadot/node-key)
         {{- if .Values.validator }}
           --validator
-          --key=$(cat /etc/polkadot/session-key)
         {{- end }}
         {{- if .Values.telemetry }}
           --telemetry-url {{ .Values.telemetry }}
@@ -105,9 +104,6 @@ spec:
         - name: chainspec
           mountPath: {{ .Values.chainspec.basePath }}
         {{- end }}
-        - name: session-key
-          mountPath: /etc/polkadot/session-key
-          subPath: session-key
         - name: node-key
           mountPath: /etc/polkadot/node-key
           subPath: node-key
@@ -116,13 +112,6 @@ spec:
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       volumes:
-      - name: session-key
-        secret:
-          secretName: {{ include "polkadot-deployer.sessionKey" . }}
-          defaultMode: 256
-          items:
-          - key: session-key
-            path: session-key
       - name: node-key
         secret:
           secretName: {{ include "polkadot-deployer.nodeKey" . }}

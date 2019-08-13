@@ -5,6 +5,7 @@ FROM ubuntu:18.04
 
 RUN apt update && \
   apt install --no-install-recommends -y \
+  curl \
   jq \
   libssl1.0.0 \
   libssl-dev

@@ -17,7 +17,10 @@ for key in /keys/*; do
             ;;
     esac
 
-    curl -H "Content-Type: application/json" \
+    echo "KEY_SEED: $KEY_SEED"
+    echo "KEY_TYPE: $KEY_TYPE"
+
+    curl -H -v "Content-Type: application/json" \
          --data '{ "jsonrpc":"2.0", "method":"author_insertKey", "params":["keyType": "'"${KEY_TYPE}"'", "suri": "'"${KEY_SEED}"'"],"id":1 }' \
          "${RPC_ENDPOINT}"
 done

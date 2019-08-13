@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Release.Name }}-session-injection
+spec:
+  template:
+    spec:
+      containers:
+      - name: {{ .Release.Name }}-session-injection
+        image: {{ .Values.initImage.repo }}:{{ .Values.initImage.tag }}
+        command:
+        - /app/inject_session_keys.sh
+        volumeMounts:
+        - name: session-keys
+          mountPath: /keys
+      restartPolicy: Never
+      volumes:
+      - name: session-keys
+        secret:
+          secretName: {{ include "polkadot-deployer.sessionKey" . }}
+          defaultMode: 256
+          items:
+          - key: grandpa-session-key
+            path: grandpa-session
+          - key: babe-session-key
+            path: babe-session
+          - key: parachain-validator-session-key
+            path: parachain-validator-session
+          - key: imonline-session-key
+            path: imonline-session
+  backoffLimit: 4

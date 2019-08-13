@@ -81,7 +81,7 @@ spec:
         ports:
         - containerPort: {{ .Values.p2pPort }}
           name: p2p
-        - containerPort: 9933
+        - containerPort: {{ .Values.rpcPort }}
           name: http-rpc
         - containerPort: 9944
           name: websocket-rpc

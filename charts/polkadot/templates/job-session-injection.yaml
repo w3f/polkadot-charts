@@ -10,7 +10,7 @@ spec:
         image: {{ .Values.initImage.repo }}:{{ .Values.initImage.tag }}
         command:
         - /app/inject_session_keys.sh
-        - {{ include "polkadot-deployer.rpcService" . }}
+        - {{ include "polkadot-deployer.rpcService" . }}:{{ .Values.rpcPort }}
         volumeMounts:
         - name: session-keys
           mountPath: /keys

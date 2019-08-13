@@ -1,4 +1,4 @@
-FROM web3f/polkadot:k4a AS polkadot
+FROM web3f/polkadot:kusama AS polkadot
 
 
 FROM ubuntu:18.04

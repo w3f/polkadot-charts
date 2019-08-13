@@ -1,6 +1,6 @@
 image:
   repo: web3f/polkadot
-  tag: k4a
+  tag: kusama
 
 initImage:
   repo: web3f/polkadot-deployer
@@ -16,7 +16,7 @@ chainspec:
   custom: true
   basePath: "/chainspec"
   name: "chainspec.json"
-  keys:
+  addresses:
     session: ["session_key_1", "session_key2"]
     stash: ["stash_key_1", "stash_key2"]
     controller: ["controller_key_1", "controller_key2"]

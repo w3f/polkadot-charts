@@ -22,10 +22,10 @@ chainspec:
     controller: ["controller_key_1", "controller_key2"]
 
 keys:
-  grandpa: "session_key"
-  babe: "session_key"
-  parachainValidator: "session_key"
-  imonline: "session_key"
+  session_grandpa: "session_key"
+  session_babe: "session_key"
+  session_parachain_validator: "session_key"
+  session_imonline: "session_key"
 
 nodeKey: "0000000000000000000000000000000000000000000000000000000000000001"
 

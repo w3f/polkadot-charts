@@ -23,9 +23,9 @@ data:
       },
       "genesis": {
         "runtime": {
-          "aura": {
+          "babe": {
             "authorities": [
-              {{- range $index, $value := .Values.chainspec.addresses.session }}
+              {{- range $index, $value := .Values.chainspec.addresses.session_babe }}
               {{ $value | quote }}{{- if ne $index $lastIndex }},{{- end }}
               {{- end }}
             ]
@@ -49,12 +49,19 @@ data:
           },
           "session": {
             "keys": [
-              {{- $sessionKeys := .Values.chainspec.addresses.session }}
+              {{- $grandpaSessionKeys := .Values.chainspec.addresses.session_grandpa }}
+              {{- $babeSessionKeys := .Values.chainspec.addresses.session_babe }}
+              {{- $parachainSessionKeys := .Values.chainspec.addresses.session_parachain_validator }}
+              {{- $imonlineSessionKeys := .Values.chainspec.addresses.session_imonline }}
+
               {{- range $index, $value := .Values.chainspec.addresses.stash }}
               [
                 {{ $value | quote }},
                 {
-                  "ed25519": {{ index $sessionKeys $index | quote }}
+                  "grandpa": {{ index $grandpaSessionKeys $index | quote }},
+                  "babe": {{ index $babeSessionKeys $index | quote }},
+                  "parachain_validator": {{ index $parachainSessionKeys $index | quote }},
+                  "im_online": {{ index $imonlineSessionKeys $index | quote }}
                 }
               ]{{- if ne $index $lastIndex }},{{- end }}
               {{- end }}
@@ -81,7 +88,7 @@ data:
           },
           "grandpa": {
             "authorities": [
-              {{- range $index, $value := .Values.chainspec.addresses.session }}
+              {{- range $index, $value := .Values.chainspec.addresses.session_grandpa }}
               [
                 {{ $value | quote }},
                 1

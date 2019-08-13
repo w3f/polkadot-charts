@@ -53,6 +53,11 @@ polkadot-external-websockets
 {{ .Release.Name }}-p2p
 {{- end }}
 
+{{/* Returns the http RPC service name */}}
+{{- define "polkadot-deployer.rpcService" -}}
+{{ .Release.Name }}-rpc
+{{- end }}
+
 {{/* Returns the bootnode service name */}}
 {{- define "polkadot-deployer.bootnodeService" -}}
 {{ .Release.Name }}-bootnode

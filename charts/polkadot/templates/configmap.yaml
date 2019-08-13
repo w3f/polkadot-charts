@@ -6,7 +6,7 @@ metadata:
   namespace: {{ .Values.namespace }}
 data:
   custom_chainspec.json: |-
-    {{- $totalItems := len .Values.chainspec.keys.stash }}
+    {{- $totalItems := len .Values.chainspec.addresses.stash }}
     {{- $lastIndex := sub $totalItems 1 }}
     {
       "name": {{ .Values.deploymentName | quote }},
@@ -25,21 +25,21 @@ data:
         "runtime": {
           "aura": {
             "authorities": [
-              {{- range $index, $value := .Values.chainspec.keys.session }}
+              {{- range $index, $value := .Values.chainspec.addresses.session }}
               {{ $value | quote }}{{- if ne $index $lastIndex }},{{- end }}
               {{- end }}
             ]
           },
           "indices": {
             "ids": [
-              {{- range $index, $value := .Values.chainspec.keys.stash }}
+              {{- range $index, $value := .Values.chainspec.addresses.stash }}
               {{ $value | quote }}{{- if ne $index $lastIndex }},{{- end }}
               {{- end }}
             ]
           },
           "balances": {
             "balances": [
-              {{- range $index, $value := .Values.chainspec.keys.stash }}
+              {{- range $index, $value := .Values.chainspec.addresses.stash }}
               [
                 {{ $value | quote }},
                 1048576000000000000
@@ -49,8 +49,8 @@ data:
           },
           "session": {
             "keys": [
-              {{- $sessionKeys := .Values.chainspec.keys.session }}
-              {{- range $index, $value := .Values.chainspec.keys.stash }}
+              {{- $sessionKeys := .Values.chainspec.addresses.session }}
+              {{- range $index, $value := .Values.chainspec.addresses.stash }}
               [
                 {{ $value | quote }},
                 {
@@ -63,13 +63,13 @@ data:
           "staking": {
             "validatorCount": {{ $totalItems }},
             "invulnerables": [
-              {{- range $index, $value := .Values.chainspec.keys.stash }}
+              {{- range $index, $value := .Values.chainspec.addresses.stash }}
               {{ $value | quote }}{{- if ne $index $lastIndex }},{{- end }}
               {{- end }}
             ],
             "stakers": [
-              {{- $controllers := .Values.chainspec.keys.controller }}
-              {{- range $index, $value := .Values.chainspec.keys.stash }}
+              {{- $controllers := .Values.chainspec.addresses.controller }}
+              {{- range $index, $value := .Values.chainspec.addresses.stash }}
               [
                 {{ $value | quote }},
                 {{ index $controllers $index | quote }},
@@ -81,7 +81,7 @@ data:
           },
           "grandpa": {
             "authorities": [
-              {{- range $index, $value := .Values.chainspec.keys.session }}
+              {{- range $index, $value := .Values.chainspec.addresses.session }}
               [
                 {{ $value | quote }},
                 1
@@ -90,7 +90,7 @@ data:
             ]
           },
           "sudo": {
-            "key": "{{ index .Values.chainspec.keys.controller 0 }}"
+            "key": "{{ index .Values.chainspec.addresses.controller 0 }}"
           }
         }
       }

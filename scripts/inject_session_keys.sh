@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set +x
+set -euo pipefail
 
 RPC_ENDPOINT=${1}
 
@@ -12,7 +12,6 @@ for key in /keys/*; do
     case "$key" in
         /keys/grandpa-session)
             KEY_TYPE=ed25
-            break
             ;;
         *)
             KEY_TYPE=sr25

@@ -99,6 +99,14 @@ data:
               {{- end }}
             ]
           },
+          "imOnline": {
+            "gossipAt": 0,
+            "keys": [
+              {{- range $index, $value := .Values.chainspec.addresses.session_imonline }}
+              {{ $value | quote }}{{- if ne $index $lastIndex }},{{- end }}
+              {{- end }}
+            ]
+          },
           "sudo": {
             "key": "{{ index .Values.chainspec.addresses.controller 0 }}"
           }

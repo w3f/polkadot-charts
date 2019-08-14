@@ -1,3 +1,4 @@
+{{ if .Values.validator }}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -30,3 +31,4 @@ spec:
           - key: imonline-session-key
             path: imonline-session
   backoffLimit: 4
+{{ end }}

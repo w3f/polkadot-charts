@@ -11,14 +11,22 @@ for key in /keys/*; do
 
     case "$key" in
         /keys/grandpa-session)
-            KEY_TYPE=ed25
+            KEY_TYPE=gran
+            ;;
+        /keys/babe-session)
+            KEY_TYPE=babe
+            ;;
+        /keys/imonline-session)
+            KEY_TYPE=imon
             ;;
         *)
-            KEY_TYPE=sr25
+            KEY_TYPE=
             ;;
     esac
 
-    curl -H "Content-Type: application/json" \
-         --data '{ "jsonrpc":"2.0", "method":"author_insertKey", "params":["'"${KEY_TYPE}"'", "'"${KEY_SEED}"'"],"id":1 }' \
-         "${RPC_ENDPOINT}"
+    if [ ! -z "${KEY_TYPE}" ]; then
+        curl -H "Content-Type: application/json" \
+             --data '{ "jsonrpc":"2.0", "method":"author_insertKey", "params":["'"${KEY_TYPE}"'", "'"${KEY_SEED}"'"],"id":1 }' \
+             "${RPC_ENDPOINT}"
+    fi
 done

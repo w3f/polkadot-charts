@@ -24,7 +24,6 @@ chainspec:
 keys:
   session_grandpa: "session_key"
   session_babe: "session_key"
-  session_parachain_validator: "session_key"
   session_imonline: "session_key"
 
 nodeKey: "0000000000000000000000000000000000000000000000000000000000000001"

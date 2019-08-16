@@ -26,8 +26,6 @@ spec:
             path: grandpa-session
           - key: babe-session-key
             path: babe-session
-          - key: parachain-validator-session-key
-            path: parachain-validator-session
           - key: imonline-session-key
             path: imonline-session
   backoffLimit: 4

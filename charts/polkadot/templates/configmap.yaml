@@ -54,7 +54,6 @@ data:
             "keys": [
               {{- $grandpaSessionKeys := .Values.chainspec.addresses.session_grandpa }}
               {{- $babeSessionKeys := .Values.chainspec.addresses.session_babe }}
-              {{- $parachainSessionKeys := .Values.chainspec.addresses.session_parachain_validator }}
               {{- $imonlineSessionKeys := .Values.chainspec.addresses.session_imonline }}
 
               {{- range $index, $value := .Values.chainspec.addresses.stash }}
@@ -63,7 +62,6 @@ data:
                 {
                   "grandpa": {{ index $grandpaSessionKeys $index | quote }},
                   "babe": {{ index $babeSessionKeys $index | quote }},
-                  "parachain_validator": {{ index $parachainSessionKeys $index | quote }},
                   "im_online": {{ index $imonlineSessionKeys $index | quote }}
                 }
               ]{{- if ne $index $lastIndex }},{{- end }}

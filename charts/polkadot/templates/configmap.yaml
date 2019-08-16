@@ -62,6 +62,7 @@ data:
                 {
                   "grandpa": {{ index $grandpaSessionKeys $index | quote }},
                   "babe": {{ index $babeSessionKeys $index | quote }},
+                  "parachain_validator": {{ index $babeSessionKeys $index | quote }},
                   "im_online": {{ index $imonlineSessionKeys $index | quote }}
                 }
               ]{{- if ne $index $lastIndex }},{{- end }}

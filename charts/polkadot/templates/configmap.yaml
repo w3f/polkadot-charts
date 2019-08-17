@@ -23,16 +23,6 @@ data:
       },
       "genesis": {
         "runtime": {
-          "babe": {
-            "authorities": [
-              {{- range $index, $value := .Values.chainspec.addresses.session_babe }}
-              [
-                {{ $value | quote }},
-                1
-              ]{{- if ne $index $lastIndex }},{{- end }}
-              {{- end }}
-            ]
-          },
           "indices": {
             "ids": [
               {{- range $index, $value := .Values.chainspec.addresses.stash }}
@@ -85,24 +75,6 @@ data:
                 5000,
                 "Validator"
               ]{{- if ne $index $lastIndex }},{{- end }}
-              {{- end }}
-            ]
-          },
-          "grandpa": {
-            "authorities": [
-              {{- range $index, $value := .Values.chainspec.addresses.session_grandpa }}
-              [
-                {{ $value | quote }},
-                1
-              ]{{- if ne $index $lastIndex }},{{- end }}
-              {{- end }}
-            ]
-          },
-          "imOnline": {
-            "gossipAt": 0,
-            "keys": [
-              {{- range $index, $value := .Values.chainspec.addresses.session_imonline }}
-              {{ $value | quote }}{{- if ne $index $lastIndex }},{{- end }}
               {{- end }}
             ]
           },

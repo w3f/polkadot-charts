@@ -3,6 +3,7 @@
 set -euo pipefail
 
 RPC_ENDPOINT=${1}
+STATEFULSET_NAME=${2}
 
 for key in /keys/*; do
     [ -e "$key" ] || continue
@@ -30,3 +31,7 @@ for key in /keys/*; do
              "${RPC_ENDPOINT}"
     fi
 done
+
+# restart pod to start using the grandpa key
+kubectl scale statefulset ${STATEFULSET_NAME} --replicas=0
+kubectl scale statefulset ${STATEFULSET_NAME} --replicas=1

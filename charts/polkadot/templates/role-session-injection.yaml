@@ -1,0 +1,9 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ include "polkadot-deployer.sessionInjectionName" . }}
+  namespace: {{ .Values.namespace }}
+rules:
+- apiGroups: ["apps"]
+  verbs: ["patch"]
+  resources: ["statefulsets/scale"]

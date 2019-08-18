@@ -2,16 +2,19 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ .Release.Name }}-session-injection
+  name: {{ include "polkadot-deployer.sessionInjectionName" . }}
+  namespace: {{ .Values.namespace }}
 spec:
   template:
     spec:
+      serviceAccountName: {{ include "polkadot-deployer.sessionInjectionName" . }}
       containers:
-      - name: {{ .Release.Name }}-session-injection
+      - name: {{ include "polkadot-deployer.sessionInjectionName" . }}
         image: {{ .Values.initImage.repo }}:{{ .Values.initImage.tag }}
         command:
         - /app/inject_session_keys.sh
         - {{ include "polkadot-deployer.rpcService" . }}:{{ .Values.rpcPort }}
+        - {{ include "polkadot-deployer.statefulsetName" . }}
         volumeMounts:
         - name: session-keys
           mountPath: /keys

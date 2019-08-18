@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{ .Release.Name }}
+  name: {{ include "polkadot-deployer.statefulsetName" . }}
   namespace: {{ .Values.namespace }}
   labels:
     node: {{ .Release.Name }}

@@ -78,6 +78,9 @@ spec:
         {{- if .Values.telemetry }}
           --telemetry-url {{ .Values.telemetry }}
         {{- end }}
+        {{- if .Values.extraArgs }}
+        {{ .Values.extraArgs }}
+        {{- end }}
         ports:
         - containerPort: {{ .Values.p2pPort }}
           name: p2p

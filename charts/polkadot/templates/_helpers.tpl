@@ -71,3 +71,13 @@ polkadot-external-websockets
 {{ .Values.chainspec.basePath }}/{{ .Values.chainspec.name }}
 {{- end -}}
 {{- end }}
+
+{{/* Returns the statefulset name */}}
+{{- define "polkadot-deployer.statefulsetName" -}}
+{{ .Release.Name }}
+{{- end }}
+
+{{/* Returns the default name to use with session injection related resources */}}
+{{- define "polkadot-deployer.sessionInjectionName" -}}
+{{ .Release.Name }}-session-injection
+{{- end }}

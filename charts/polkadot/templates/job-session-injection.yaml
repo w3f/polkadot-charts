@@ -31,5 +31,5 @@ spec:
             path: babe-session
           - key: imonline-session-key
             path: imonline-session
-  backoffLimit: 4
+  backoffLimit: 120
 {{ end }}

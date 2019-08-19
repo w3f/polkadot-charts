@@ -5,5 +5,7 @@ metadata:
   namespace: {{ .Values.namespace }}
 rules:
 - apiGroups: ["apps"]
-  verbs: ["patch"]
+  verbs:
+  - "get"
+  - "patch"
   resources: ["statefulsets/scale"]

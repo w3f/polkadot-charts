@@ -129,11 +129,15 @@ spec:
       {{- end }}
       {{- if not .Values.persistence.enabled }}
       - name: data
-        hostPath:
-          path: "/tmp/{{ .Release.Name}}-data"
+        emptyDir: {}
+        #hostPath:
+        #  path: "/tmp/{{ .Release.Name}}-data"
+        #  type: DirectoryOrCreate
       - name: chainspec
-        hostPath:
-          path: "/tmp/{{ .Release.Name}}-chainspec"
+        emptyDir: {}
+        #hostPath:
+        #  path: "/tmp/{{ .Release.Name}}-chainspec"
+        #  type: DirectoryOrCreate
       {{- else }}
   volumeClaimTemplates:
   - metadata:

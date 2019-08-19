@@ -11,7 +11,7 @@ RUN apt update && \
   libssl1.0.0 \
   libssl-dev
 
-ENV KUBECTL_VERSION=1.13.7
+ENV KUBECTL_VERSION=v1.13.7
 
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl && \
   chmod a+x kubectl && \

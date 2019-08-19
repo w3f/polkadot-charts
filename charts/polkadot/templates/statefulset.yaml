@@ -130,10 +130,10 @@ spec:
       {{- if not .Values.persistence.enabled }}
       - name: data
         hostPath:
-          path: "/{{ .Release.Name}}-data"
+          path: "/tmp/{{ .Release.Name}}-data"
       - name: chainspec
         hostPath:
-          path: "/{{ .Release.Name}}-chainspec"
+          path: "/tmp/{{ .Release.Name}}-chainspec"
       {{- else }}
   volumeClaimTemplates:
   - metadata:

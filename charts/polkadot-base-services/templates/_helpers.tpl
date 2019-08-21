@@ -57,3 +57,8 @@ grafana.{{ .Values.domain }}
 {{- define "polkadot-deployer.externalBootNodeService" -}}
 polkadot-external-bootnode
 {{- end }}
+
+{{/* Returns the external validator service name */}}
+{{- define "polkadot-deployer.externalValidatorService" -}}
+polkadot-external-validator
+{{- end }}

@@ -43,7 +43,7 @@ resources: {}
 
 persistence:
   enabled: false
-  dataSize: 32Gi
+  dataSize: 128Gi
   chainspecSize: 1Gi
   accessModes: [ "ReadWriteOnce" ]
 

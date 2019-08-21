@@ -1,0 +1,17 @@
+{{ if not .Values.local -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "polkadot-deployer.externalValidatorService" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Chart.Name }}
+spec:
+  externalTrafficPolicy: Local
+  ports:
+  - port: 30101
+    name: p2p
+  selector:
+    node: polkadot-node-1
+  type: LoadBalancer
+{{ end }}

@@ -81,6 +81,9 @@ spec:
         {{- if .Values.extraArgs }}
           {{ .Values.extraArgs }}
         {{- end }}
+        {{- range _, $value := .Values.extraBootnodes }}
+          --bootnodes={{ $value }}
+        {{- end }}
         ports:
         - containerPort: {{ .Values.p2pPort }}
           name: p2p

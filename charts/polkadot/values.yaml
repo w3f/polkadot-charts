@@ -57,3 +57,5 @@ p2pPort: 30333
 rpcPort: 9933
 
 extraArgs: ""
+
+extraBootnodes: []

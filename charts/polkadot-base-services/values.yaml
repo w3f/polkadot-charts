@@ -16,4 +16,4 @@ validatorBootNodeP2PPort: 30101
 
 monitoring: false
 
-includeValidatorBootnode: false
+includeValidatorBootNode: false

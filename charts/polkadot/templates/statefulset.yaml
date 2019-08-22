@@ -81,7 +81,7 @@ spec:
         {{- if .Values.extraArgs }}
           {{ .Values.extraArgs }}
         {{- end }}
-        {{- range _, $value := .Values.extraBootnodes }}
+        {{- range $value := .Values.extraBootnodes }}
           --bootnodes={{ $value }}
         {{- end }}
         ports:

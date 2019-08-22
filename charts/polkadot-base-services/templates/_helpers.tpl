@@ -62,3 +62,8 @@ polkadot-external-bootnode
 {{- define "polkadot-deployer.externalValidatorService" -}}
 polkadot-external-validator
 {{- end }}
+
+{{/* Returns the validator p2p domain */}}
+{{- define "polkadot-deployer.p2pValidatorDomain" -}}
+p2pv.{{ .Values.domain }}
+{{- end }}

@@ -1,4 +1,4 @@
-{{ if not .Values.local -}}
+{{ if .Values.includeValidatorBootNode -}}
 apiVersion: v1
 kind: Service
 metadata:
@@ -6,10 +6,12 @@ metadata:
   namespace: {{ .Values.namespace }}
   labels:
     app: {{ .Chart.Name }}
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: {{ include "polkadot-deployer.p2pValidatorDomain" . }}.
 spec:
   externalTrafficPolicy: Local
   ports:
-  - port: 30101
+  - port: {{ .Values.validatorBootNodeP2PPort }}
     name: p2p
   selector:
     node: polkadot-node-1

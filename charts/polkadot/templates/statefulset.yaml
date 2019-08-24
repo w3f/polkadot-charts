@@ -74,6 +74,8 @@ spec:
           --node-key=$(cat /etc/polkadot/node-key)
         {{- if .Values.validator }}
           --validator
+        {{- else }}
+          --in-peers 500
         {{- end }}
         {{- if .Values.telemetry }}
           --telemetry-url {{ .Values.telemetry }}

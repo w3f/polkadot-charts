@@ -74,14 +74,20 @@ spec:
           --node-key=$(cat /etc/polkadot/node-key)
         {{- if .Values.validator }}
           --validator
+        {{- if .Values.extraArgs.validator }}
+          {{ .Values.extraArgs.validator }}
+        {{- end }}
         {{- else }}
           --in-peers 500
+        {{- if .Values.extraArgs.bootnode }}
+          {{ .Values.extraArgs.bootnode }}
+        {{- end }}
         {{- end }}
         {{- if .Values.telemetry }}
           --telemetry-url {{ .Values.telemetry }}
         {{- end }}
-        {{- if .Values.extraArgs }}
-          {{ .Values.extraArgs }}
+        {{- if .Values.extraArgs.common }}
+          {{ .Values.extraArgs.common }}
         {{- end }}
         {{- range $value := .Values.extraBootnodes }}
           --bootnodes={{ $value }}

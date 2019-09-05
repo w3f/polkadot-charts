@@ -1,3 +1,5 @@
+FROM parity/subkey:2.0.0 AS subkey
+
 FROM web3f/polkadot:kusama AS polkadot
 
 
@@ -20,6 +22,7 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/${KUBECTL
 WORKDIR /app
 
 COPY --from=polkadot /usr/local/bin/polkadot .
+COPY --from=subkey /usr/local/bin/subkey /usr/local/bin/
 
 RUN ./polkadot build-spec --chain local > ./base_chainspec.json && \
   rm ./polkadot

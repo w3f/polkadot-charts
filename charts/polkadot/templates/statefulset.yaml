@@ -22,10 +22,12 @@ spec:
         app: {{ .Chart.Name }}
     spec:
       serviceAccount: {{ include "polkadot-deployer.serviceAccount" . }}
+      {{- if not .Values.local }}
       securityContext:
         runAsUser: 1000
         fsGroup: 1000
         runAsNonRoot: true
+      {{- end }}
       {{- if .Values.dnsNameservers }}
       dnsPolicy: "None"
       dnsConfig:
@@ -34,6 +36,18 @@ spec:
       {{ end }}
       {{- if not .Values.chainspec.preset }}
       initContainers:
+      {{- if .Values.local }}
+      - name: volume-mount-permissions
+        image: busybox
+        command: ["sh", "-c", "chown -R 1000:1000 /chainspec && chown -R 1000:1000 /data"]
+        securityContext:
+          runAsUser: 0
+        volumeMounts:
+        - name: chainspec
+          mountPath: /chainspec
+        - name: data
+          mountPath: /data
+      {{- end }}
       - name: {{ .Release.Name }}-init
         image: {{ .Values.initImage.repo }}:{{ .Values.initImage.tag }}
         command:
@@ -131,7 +145,11 @@ spec:
       - name: node-key
         secret:
           secretName: {{ include "polkadot-deployer.nodeKey" . }}
+          {{- if .Values.local }}
+          defaultMode: 511
+          {{- else }}
           defaultMode: 256
+          {{- end }}
           items:
           - key: node-key
             path: node-key
@@ -140,31 +158,36 @@ spec:
         configMap:
           name: {{ include "polkadot-deployer.custom-chainspec-configmap" . }}
       {{- end }}
-      {{- if not .Values.persistence.enabled }}
-      - name: data
-        emptyDir: {}
-        #hostPath:
-        #  path: "/tmp/{{ .Release.Name}}-data"
-        #  type: DirectoryOrCreate
-      - name: chainspec
-        emptyDir: {}
-        #hostPath:
-        #  path: "/tmp/{{ .Release.Name}}-chainspec"
-        #  type: DirectoryOrCreate
-      {{- else }}
   volumeClaimTemplates:
   - metadata:
       name: data
     spec:
+      {{- if .Values.persistence.enabled }}
       accessModes: {{ .Values.persistence.accessModes }}
       resources:
         requests:
           storage: {{ .Values.persistence.dataSize }}
+      {{- else }}
+      storageClassName: local-data-{{ .Release.Name }}
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 3Gi
+      {{- end }}
   - metadata:
       name: chainspec
     spec:
+      {{- if .Values.persistence.enabled }}
       accessModes: {{ .Values.persistence.accessModes }}
       resources:
         requests:
           storage: {{ .Values.persistence.chainspecSize }}
-      {{ end }}
+      {{- else }}
+      storageClassName: local-chainspec
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1Gi
+      {{- end }}

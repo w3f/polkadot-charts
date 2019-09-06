@@ -62,3 +62,5 @@ extraArgs:
   common: ""
 
 extraBootnodes: []
+
+local: false

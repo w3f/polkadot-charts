@@ -100,19 +100,19 @@ spec:
         - containerPort: 9944
           name: websocket-rpc
         readinessProbe:
-          failureThreshold: 20
+          failureThreshold: 100
           httpGet:
             path: /health
             port: http-rpc
           initialDelaySeconds: 10
-          periodSeconds: 100
+          periodSeconds: 10
         livenessProbe:
-          failureThreshold: 20
+          failureThreshold: 100
           httpGet:
             path: /health
             port: http-rpc
           initialDelaySeconds: 10
-          periodSeconds: 100
+          periodSeconds: 10
         volumeMounts:
         - name: data
           mountPath: /data

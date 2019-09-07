@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -euo pipefail
+set -x
 
 RPC_ENDPOINT=${1}
 STATEFULSET_NAME=${2}

@@ -17,3 +17,5 @@ validatorBootNodeP2PPort: 30101
 monitoring: false
 
 includeValidatorBootNode: false
+
+grafanaWhiteListSourceRange: "0.0.0.0/0"

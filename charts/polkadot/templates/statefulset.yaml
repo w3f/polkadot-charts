@@ -98,7 +98,7 @@ spec:
         {{- end }}
         {{- end }}
         {{- if .Values.telemetry }}
-          --telemetry-url {{ .Values.telemetry }}
+          --telemetry-url '{{ .Values.telemetry }} 1'
         {{- end }}
         {{- if .Values.extraArgs.common }}
           {{ .Values.extraArgs.common }}

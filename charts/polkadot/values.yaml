@@ -1,6 +1,6 @@
 image:
   repo: web3f/polkadot
-  tag: kusama-v0.5.1
+  tag: kusama-v0.6.2
 
 initImage:
   repo: web3f/polkadot-deployer

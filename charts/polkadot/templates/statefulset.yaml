@@ -88,6 +88,7 @@ spec:
           --node-key=$(cat /etc/polkadot/node-key)
         {{- if .Values.validator }}
           --validator
+          --pruning=archive
         {{- if .Values.extraArgs.validator }}
           {{ .Values.extraArgs.validator }}
         {{- end }}

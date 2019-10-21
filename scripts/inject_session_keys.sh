@@ -34,6 +34,9 @@ for key in /keys/*; do
         /keys/imonline-session)
             KEY_TYPE=imon
             ;;
+        /keys/parachain-session)
+            KEY_TYPE=para
+            ;;
         *)
             KEY_TYPE=
             ;;

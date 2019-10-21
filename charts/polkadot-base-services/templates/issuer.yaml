@@ -12,12 +12,11 @@ spec:
     privateKeySecretRef:
       name: letsencrypt
 
-    dns01:
-      providers:
-        - name: prod-dns
-          cloudflare:
-            email: {{ .Values.cloudflareEmail }}
-            apiKeySecretRef:
-              name: cloudflare-credentials
-              key: api-key
+    solvers:
+    - dns01:
+        cloudflare:
+          email: {{ .Values.cloudflareEmail }}
+          apiKeySecretRef:
+            name: cloudflare-credentials
+            key: api-key
 {{ end }}

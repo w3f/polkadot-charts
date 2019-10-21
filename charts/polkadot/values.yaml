@@ -25,6 +25,7 @@ keys:
   session_grandpa: "session_key"
   session_babe: "session_key"
   session_imonline: "session_key"
+  session_parachain: "session_key"
 
 nodeKey: "0000000000000000000000000000000000000000000000000000000000000001"
 

@@ -31,5 +31,7 @@ spec:
             path: babe-session
           - key: imonline-session-key
             path: imonline-session
+          - key: parachain-session-key
+            path: parachain-session
   backoffLimit: 120
 {{ end }}

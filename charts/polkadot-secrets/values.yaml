@@ -4,4 +4,7 @@ namespace: default
 
 cloudflareApiKey: "my_cloudflare_api_key"
 
-grafanaPassword: "my_grafana_password"
+grafanaSecret:
+  create: true
+  user: "admin"
+  password: "my_grafana_password"

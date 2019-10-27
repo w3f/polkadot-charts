@@ -1,8 +1,8 @@
-local: false
-
 namespace: default
 
-cloudflareApiKey: "my_cloudflare_api_key"
+cloudflareSecret:
+  create: true
+  apiKey: "my_cloudflare_api_key"
 
 grafanaSecret:
   create: true

@@ -19,3 +19,5 @@ monitoring: false
 includeValidatorBootNode: false
 
 grafanaWhiteListSourceRange: "0.0.0.0/0"
+
+createCertIssuer: true

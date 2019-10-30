@@ -1,10 +1,10 @@
 image:
   repo: web3f/polkadot
-  tag: kusama-v0.6.2
+  tag: kusama-v0.6.5
 
 initImage:
   repo: web3f/polkadot-deployer
-  tag: 04cbb50f9bd1d2072005f1ab4872f4f59b7b030e
+  tag: edc37a834b21a7b7e28604ccc04005118c4be6e1
 
 name: testnet-0
 deploymentName: testnet

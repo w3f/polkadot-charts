@@ -4,7 +4,7 @@ image:
 
 initImage:
   repo: web3f/polkadot-deployer
-  tag: 81e6abdea68a6a29ff80d33c067b29a694ca01a1
+  tag: 861e3096c4c6a17908793d40aa8d5f1d27020b5f
 
 name: testnet-0
 deploymentName: testnet

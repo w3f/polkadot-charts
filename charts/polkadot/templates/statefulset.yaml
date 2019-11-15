@@ -93,6 +93,7 @@ spec:
           {{ .Values.extraArgs.validator }}
         {{- end }}
         {{- else }}
+          --pruning=archive
           --in-peers 500
         {{- if .Values.extraArgs.bootnode }}
           {{ .Values.extraArgs.bootnode }}

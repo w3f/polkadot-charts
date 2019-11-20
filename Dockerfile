@@ -1,6 +1,6 @@
 FROM parity/subkey:2.0.0 AS subkey
 
-FROM web3f/polkadot:kusama-v0.6.5-tx-enabled AS polkadot
+FROM web3f/polkadot:kusama-v0.6.17 AS polkadot
 
 
 FROM ubuntu:18.04

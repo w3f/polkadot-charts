@@ -139,9 +139,11 @@ spec:
         - name: chainspec
           mountPath: {{ .Values.chainspec.basePath }}
         {{- end }}
+        {{- if .Values.nodeKey }}
         - name: node-key
           mountPath: /etc/polkadot/node-key
           subPath: node-key
+        {{- end }}
         securityContext:
           allowPrivilegeEscalation: false
         resources:

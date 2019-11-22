@@ -78,7 +78,10 @@ spec:
         args:
         - -c
         - exec /usr/local/bin/polkadot
-          --chain={{ include "polkadot-deployer.chainspecName" . }}
+          {{- $chainspec := include "polkadot-deployer.chainspecName" . -}}
+          {{- if $chainspec }}
+          --chain={{ $chainspec }}
+          {{- end }}
           --name={{ .Values.name }}
           -d=/data
           --rpc-external

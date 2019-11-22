@@ -85,7 +85,9 @@ spec:
           --rpc-cors all
           --ws-external
           --port {{ .Values.p2pPort }}
+        {{- if .Values.nodeKey }}
           --node-key=$(cat /etc/polkadot/node-key)
+        {{- end }}
         {{- if .Values.validator }}
           --validator
         {{- if .Values.extraArgs.validator }}
@@ -141,7 +143,9 @@ spec:
           allowPrivilegeEscalation: false
         resources:
 {{ toYaml .Values.resources | indent 10 }}
+      {{- if or .Values.nodeKey .Values.chainspec.custom }}
       volumes:
+      {{- if .Values.nodeKey }}
       - name: node-key
         secret:
           secretName: {{ include "polkadot-deployer.nodeKey" . }}
@@ -153,10 +157,12 @@ spec:
           items:
           - key: node-key
             path: node-key
+      {{- end }}
       {{- if .Values.chainspec.custom }}
       - name: custom-chainspec
         configMap:
           name: {{ include "polkadot-deployer.custom-chainspec-configmap" . }}
+      {{- end }}
       {{- end }}
   volumeClaimTemplates:
   - metadata:

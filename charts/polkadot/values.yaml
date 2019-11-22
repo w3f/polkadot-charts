@@ -27,8 +27,6 @@ keys:
   session_imonline: "session_key"
   session_parachain: "session_key"
 
-nodeKey: "0000000000000000000000000000000000000000000000000000000000000001"
-
 bootNodes:
 - "/dns4/polkadot-node-0/tcp/30333/p2p/QmRpheLN4JWdAnY7HGJfWFNbfkQCb6tFf4vvA6hgjMZKrR"
 

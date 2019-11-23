@@ -192,6 +192,7 @@ spec:
         requests:
           storage: 3Gi
       {{- end }}
+  {{- if not .Values.chainspec.preset }}
   - metadata:
       name: chainspec
     spec:
@@ -208,3 +209,4 @@ spec:
         requests:
           storage: 1Gi
       {{- end }}
+  {{ end }}

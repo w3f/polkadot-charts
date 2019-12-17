@@ -78,9 +78,6 @@ data:
               ]{{- if ne $index $lastIndex }},{{- end }}
               {{- end }}
             ]
-          },
-          "sudo": {
-            "key": "{{ index .Values.chainspec.addresses.controller 0 }}"
           }
         }
       }

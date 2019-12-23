@@ -52,5 +52,6 @@ for key in /keys/*; do
 done
 
 # restart pod to start using the grandpa key
-kubectl scale statefulset ${STATEFULSET_NAME} --replicas=0
-kubectl scale statefulset ${STATEFULSET_NAME} --replicas=1
+CURRENT_DIR=$(dirname "$0")
+
+$CURRENT_DIR/restart_pods.sh "${STATEFULSET_NAME}"

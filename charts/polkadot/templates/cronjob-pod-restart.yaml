@@ -10,6 +10,7 @@ spec:
     spec:
       template:
         spec:
+          serviceAccountName: {{ include "polkadot-deployer.podRestarterName" . }}
           containers:
           - name: {{ include "polkadot-deployer.podRestarterName" . }}
             image: {{ .Values.initImage.repo }}:{{ .Values.initImage.tag }}

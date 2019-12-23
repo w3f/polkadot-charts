@@ -1,0 +1,19 @@
+{{ if .Values.nodeRestart.enabled }}
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ include "polkadot-deployer.podRestarterName" . }}
+  namespace: {{ .Values.namespace }}
+spec:
+  schedule: {{ .Values.nodeRestart.schedule }}
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: {{ include "polkadot-deployer.podRestarterName" . }}
+            image: {{ .Values.initImage.repo }}:{{ .Values.initImage.tag }}
+            args:
+            - /app/restart_pods.sh
+            - {{ include "polkadot-deployer.statefulsetName" . }}
+{{ end }}

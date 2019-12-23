@@ -1,0 +1,17 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ include "polkadot-deployer.podRestarterName" . }}
+  namespace: {{ .Values.namespace }}
+rules:
+- apiGroups: ["apps"]
+  verbs:
+  - "get"
+  resources:
+  - "statefulsets"
+- apiGroups: ["apps"]
+  verbs:
+  - "get"
+  - "update"
+  resources:
+  - "statefulsets/scale"

@@ -17,4 +17,5 @@ spec:
             args:
             - /app/restart_pods.sh
             - {{ include "polkadot-deployer.statefulsetName" . }}
+          restartPolicy: Never
 {{ end }}

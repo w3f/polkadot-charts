@@ -81,3 +81,8 @@ polkadot-external-websockets
 {{- define "polkadot-deployer.sessionInjectionName" -}}
 {{ .Release.Name }}-session-injection
 {{- end }}
+
+{{/* Returns the default name to use with pod restarter  related resources */}}
+{{- define "polkadot-deployer.podRestarterName" -}}
+{{ .Release.Name }}-podRestarter
+{{- end }}

@@ -84,5 +84,5 @@ polkadot-external-websockets
 
 {{/* Returns the default name to use with pod restarter  related resources */}}
 {{- define "polkadot-deployer.podRestarterName" -}}
-{{ .Release.Name }}-podRestarter
+{{ .Release.Name }}-pod-restarter
 {{- end }}

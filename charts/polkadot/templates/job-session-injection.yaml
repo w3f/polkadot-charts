@@ -1,4 +1,4 @@
-{{ if .Values.validator }}
+{{ if and .Values.validator .Values.sessionInjection.enabled }}
 apiVersion: batch/v1
 kind: Job
 metadata:

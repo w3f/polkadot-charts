@@ -67,3 +67,6 @@ local: false
 nodeRestart:
   enabled: false
   schedule: "0 4,12,20 * * *"
+
+sessionInjection:
+  enabled: true

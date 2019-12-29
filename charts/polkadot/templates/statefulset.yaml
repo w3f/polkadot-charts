@@ -90,9 +90,14 @@ spec:
           {{- end }}
           --name={{ .Values.name }}
           -d=/data
+          {{- if .Values.unsafeEndpointAccess }}
+          --unsafe-rpc-external
+          --unsafe-ws-external
+          {{- else }}
           --rpc-external
-          --rpc-cors all
           --ws-external
+          {{- end }}
+          --rpc-cors all
           --port {{ .Values.p2pPort }}
         {{- if .Values.nodeKey }}
           --node-key=$(cat /etc/polkadot/node-key)

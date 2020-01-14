@@ -1,6 +1,6 @@
 image:
   repo: web3f/polkadot
-  tag: kusama-v0.7.9
+  tag: kusama-v0.7.16
 
 initImage:
   repo: web3f/polkadot-deployer
@@ -71,4 +71,4 @@ nodeRestart:
 sessionInjection:
   enabled: true
 
-unsafeEndpointAccess: false
+unsafeEndpointAccess: true

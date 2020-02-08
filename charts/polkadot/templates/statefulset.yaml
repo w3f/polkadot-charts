@@ -27,6 +27,7 @@ spec:
         runAsUser: 1000
         fsGroup: 1000
         runAsNonRoot: true
+        allowPrivilegeEscalation: false
       {{- end }}
       {{- if .Values.dnsNameservers }}
       dnsPolicy: "None"
@@ -41,6 +42,7 @@ spec:
         command: ["sh", "-c", "chown -R 1000:1000 /data"]
         securityContext:
           runAsUser: 0
+          runAsNonRoot: false
         volumeMounts:
         - name: data
           mountPath: /data
@@ -51,6 +53,7 @@ spec:
         command: ["sh", "-c", "chown -R 1000:1000 /chainspec"]
         securityContext:
           runAsUser: 0
+          runAsNonRoot: false
         volumeMounts:
         - name: chainspec
           mountPath: /chainspec
@@ -73,8 +76,6 @@ spec:
           mountPath: /app/custom_chainspec.json
           subPath: custom_chainspec.json
         {{- end }}
-        securityContext:
-          allowPrivilegeEscalation: false
       {{- end }}
       containers:
       - name: {{ .Release.Name }}
@@ -155,8 +156,6 @@ spec:
           mountPath: /etc/polkadot/node-key
           subPath: node-key
         {{- end }}
-        securityContext:
-          allowPrivilegeEscalation: false
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       {{- if or .Values.nodeKey .Values.chainspec.custom }}

@@ -21,3 +21,5 @@ includeValidatorBootNode: false
 grafanaWhiteListSourceRange: "0.0.0.0/0"
 
 createCertIssuer: true
+
+createBootNodeService: true

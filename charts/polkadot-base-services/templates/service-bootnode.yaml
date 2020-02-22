@@ -1,4 +1,4 @@
-{{ if not .Values.local -}}
+{{ if and (not .Values.local) (.Values.createBootNodeService) -}}
 apiVersion: v1
 kind: Service
 metadata:

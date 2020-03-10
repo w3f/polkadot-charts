@@ -15,6 +15,7 @@ spec:
     matchLabels:
       node: {{ .Release.Name }}
       app: {{ .Chart.Name }}
+  serviceName: {{ include "polkadot-deployer.statefulsetName" . }}
   template:
     metadata:
       labels:

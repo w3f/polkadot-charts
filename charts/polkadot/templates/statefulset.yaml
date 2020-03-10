@@ -9,7 +9,7 @@ metadata:
 spec:
   replicas: 1
   revisionHistoryLimit: 3
-  strategy:
+  updateStrategy:
     type: RollingUpdate
   selector:
     matchLabels:

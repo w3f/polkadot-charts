@@ -28,7 +28,6 @@ spec:
         runAsUser: 1000
         fsGroup: 1000
         runAsNonRoot: true
-        allowPrivilegeEscalation: false
       {{- end }}
       {{- if .Values.dnsNameservers }}
       dnsPolicy: "None"

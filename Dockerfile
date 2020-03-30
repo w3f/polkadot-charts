@@ -24,7 +24,7 @@ WORKDIR /app
 COPY --from=polkadot /usr/local/bin/polkadot .
 COPY --from=subkey /usr/local/bin/subkey /usr/local/bin/
 
-RUN ./polkadot build-spec --chain local > ./base_chainspec.json && \
+RUN ./polkadot build-spec --chain dev > ./base_chainspec.json && \
   rm ./polkadot
 
 COPY scripts/ .

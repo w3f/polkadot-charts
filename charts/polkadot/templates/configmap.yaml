@@ -24,7 +24,7 @@ data:
       "genesis": {
         "runtime": {
           "indices": {
-            "ids": [
+            "indices": [
               {{- range $index, $value := .Values.chainspec.addresses.stash }}
               {{ $value | quote }}{{- if ne $index $lastIndex }},{{- end }}
               {{- end }}

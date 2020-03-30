@@ -1,6 +1,6 @@
 FROM parity/subkey:2.0.0 AS subkey
 
-FROM parity/polkadot:v0.7.20 AS polkadot
+FROM parity/polkadot:v0.7.28 AS polkadot
 
 
 FROM ubuntu:18.04

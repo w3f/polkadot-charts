@@ -2,7 +2,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{ .Chart.Name }}-websockets
+  name: {{ .Release.Name }}-websockets
   namespace: {{ .Values.namespace }}
   annotations:
     kubernetes.io/ingress.class: "nginx"

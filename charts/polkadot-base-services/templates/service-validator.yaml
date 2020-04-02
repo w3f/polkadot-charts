@@ -5,7 +5,7 @@ metadata:
   name: {{ include "polkadot-deployer.externalValidatorService" . }}
   namespace: {{ .Values.namespace }}
   labels:
-    app: {{ .Chart.Name }}
+    app: {{ .Release.Name }}
   annotations:
     external-dns.alpha.kubernetes.io/hostname: {{ include "polkadot-deployer.p2pValidatorDomain" . }}.
 spec:

@@ -5,7 +5,7 @@ metadata:
   name: {{ include "polkadot-deployer.websocketService" . }}
   namespace: {{ .Values.namespace }}
   labels:
-    app: {{ .Chart.Name }}
+    app: {{ .Release.Name }}
   annotations:
     service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "3600"
 spec:

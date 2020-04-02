@@ -5,7 +5,7 @@ metadata:
   namespace: {{ .Values.namespace }}
   labels:
     node: {{ .Release.Name }}
-    app: {{ .Release.Nameo }}
+    app: {{ .Release.Name }}
 spec:
   replicas: 1
   revisionHistoryLimit: 3

@@ -5,7 +5,7 @@
 
 {{/* Returns the service account name */}}
 {{- define "polkadot-deployer.serviceAccount" -}}
-{{ .Values.name | default .Release.Name }}
+{{ .Values.serviceAccountName | default .Release.Name }}
 {{- end }}
 
 {{/* Returns the certificate name */}}

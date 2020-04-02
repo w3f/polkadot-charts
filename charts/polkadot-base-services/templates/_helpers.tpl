@@ -1,21 +1,21 @@
 {{/* Returns custom-chainspec configmap name */}}
 {{- define "polkadot-deployer.custom-chainspec-configmap" -}}
-polkadot-custom-chainspec
+{{ .Release.Name }}-custom-chainspec
 {{- end }}
 
 {{/* Returns the service account name */}}
 {{- define "polkadot-deployer.serviceAccount" -}}
-polkadot
+{{ .Release.Name }}
 {{- end }}
 
 {{/* Returns the certificate name */}}
 {{- define "polkadot-deployer.certificateName" -}}
-polkadot
+{{ .Release.Name }}
 {{- end }}
 
 {{/* Returns the TLS secret name */}}
 {{- define "polkadot-deployer.tlsSecretName" -}}
-polkadot
+{{ .Release.Name }}
 {{- end }}
 
 {{/* Returns the session key secret name */}}
@@ -30,7 +30,7 @@ polkadot
 
 {{/* Returns the PSP name */}}
 {{- define "polkadot-deployer.podSecurityPolicyName" -}}
-polkadot
+{{ .Release.Name }}
 {{- end }}
 
 {{/* Returns the websockets domain */}}
@@ -40,7 +40,7 @@ polkadot
 
 {{/* Returns the external websockets service name */}}
 {{- define "polkadot-deployer.websocketService" -}}
-polkadot-external-websockets
+{{ .Release.Name }}-external-websockets
 {{- end }}
 
 {{/* Returns the p2p domain */}}
@@ -55,12 +55,12 @@ grafana.{{ .Values.domain }}
 
 {{/* Returns the external boot node service name */}}
 {{- define "polkadot-deployer.externalBootNodeService" -}}
-polkadot-external-bootnode
+{{ .Release.Name }}-external-bootnode
 {{- end }}
 
 {{/* Returns the external validator service name */}}
 {{- define "polkadot-deployer.externalValidatorService" -}}
-polkadot-external-validator
+{{ .Release.Name }}-external-validator
 {{- end }}
 
 {{/* Returns the validator p2p domain */}}

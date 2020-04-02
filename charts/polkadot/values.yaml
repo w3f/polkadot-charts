@@ -72,3 +72,5 @@ sessionInjection:
   enabled: true
 
 unsafeEndpointAccess: true
+
+binaryName: polkadot

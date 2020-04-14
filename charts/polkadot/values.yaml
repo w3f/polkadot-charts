@@ -75,4 +75,4 @@ unsafeEndpointAccess: true
 
 binaryName: polkadot
 
-serviceAcccountName: polkadot
+serviceAccountName: polkadot

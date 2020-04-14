@@ -1,6 +1,6 @@
 FROM parity/subkey:2.0.0 AS subkey
 
-FROM parity/polkadot:v0.7.28 AS polkadot
+FROM parity/polkadot:v0.7.29 AS polkadot
 
 
 FROM ubuntu:18.04
@@ -24,7 +24,7 @@ WORKDIR /app
 COPY --from=polkadot /usr/local/bin/polkadot .
 COPY --from=subkey /usr/local/bin/subkey /usr/local/bin/
 
-RUN ./polkadot build-spec --chain kusama > ./base_chainspec.json && \
+RUN ./polkadot build-spec --chain dev > ./base_chainspec.json && \
   rm ./polkadot
 
 COPY scripts/ .

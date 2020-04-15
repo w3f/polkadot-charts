@@ -74,5 +74,3 @@ sessionInjection:
 unsafeEndpointAccess: true
 
 binaryName: polkadot
-
-serviceAccountName: polkadot

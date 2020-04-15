@@ -8,11 +8,6 @@
 polkadot-custom-chainspec
 {{- end }}
 
-{{/* Returns the service account name */}}
-{{- define "polkadot-deployer.serviceAccount" -}}
-{{ .Values.serviceAccountName | default .Release.Name }}
-{{- end }}
-
 {{/* Returns the certificate name */}}
 {{- define "polkadot-deployer.certificateName" -}}
 {{ .Release.Name }}

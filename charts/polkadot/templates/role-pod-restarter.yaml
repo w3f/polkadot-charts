@@ -12,6 +12,6 @@ rules:
 - apiGroups: ["apps"]
   verbs:
   - "get"
-  - "update"
+  - "patch"
   resources:
   - "statefulsets/scale"

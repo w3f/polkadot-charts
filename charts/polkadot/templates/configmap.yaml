@@ -24,11 +24,7 @@ data:
       "genesis": {
         "runtime": {
           "indices": {
-            "indices": [
-              {{- range $index, $value := .Values.chainspec.addresses.stash }}
-              {{ $value | quote }}{{- if ne $index $lastIndex }},{{- end }}
-              {{- end }}
-            ]
+            "indices": []
           },
           "balances": {
             "balances": [
@@ -48,6 +44,7 @@ data:
 
               {{- range $index, $value := .Values.chainspec.addresses.stash }}
               [
+                {{ $value | quote }},
                 {{ $value | quote }},
                 {
                   "grandpa": {{ index $grandpaSessionKeys $index | quote }},

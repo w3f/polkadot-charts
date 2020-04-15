@@ -5,7 +5,7 @@
 
 {{/* Returns custom-chainspec configmap name */}}
 {{- define "polkadot-deployer.custom-chainspec-configmap" -}}
-{{ .Release.Name }}-custom-chainspec
+polkadot-custom-chainspec
 {{- end }}
 
 {{/* Returns the service account name */}}

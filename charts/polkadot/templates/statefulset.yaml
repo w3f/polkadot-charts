@@ -189,7 +189,6 @@ spec:
         requests:
           storage: {{ .Values.persistence.dataSize }}
       {{- else }}
-      storageClassName: local-data-{{ .Release.Name }}
       accessModes:
       - ReadWriteOnce
       resources:
@@ -206,7 +205,6 @@ spec:
         requests:
           storage: {{ .Values.persistence.chainspecSize }}
       {{- else }}
-      storageClassName: local-chainspec
       accessModes:
       - ReadWriteOnce
       resources:

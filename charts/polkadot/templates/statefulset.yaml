@@ -22,7 +22,6 @@ spec:
         node: {{ .Release.Name }}
         app: {{ .Release.Name }}
     spec:
-      serviceAccount: {{ include "polkadot-deployer.serviceAccount" . }}
       {{- if not .Values.local }}
       securityContext:
         runAsUser: 1000

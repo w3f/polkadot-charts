@@ -9,8 +9,6 @@ initImage:
 name: testnet-0
 deploymentName: testnet
 
-namespace: default
-
 chainspec:
   preset: false
   custom: true

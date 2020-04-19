@@ -1,5 +1,3 @@
-namespace: default
-
 cloudflareSecret:
   create: true
   apiKey: "my_cloudflare_api_key"

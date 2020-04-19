@@ -3,7 +3,6 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: {{ include "polkadot-deployer.sessionInjectionName" . }}
-  namespace: {{ .Values.namespace }}
 spec:
   template:
     spec:

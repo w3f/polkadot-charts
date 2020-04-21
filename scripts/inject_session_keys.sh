@@ -37,6 +37,9 @@ for key in /keys/*; do
         /keys/parachain-session)
             KEY_TYPE=para
             ;;
+        /keys/audi-session)
+            KEY_TYPE=audi
+            ;;
         *)
             KEY_TYPE=
             ;;

@@ -32,5 +32,7 @@ spec:
             path: imonline-session
           - key: parachain-session-key
             path: parachain-session
+          - key: audi-session-key
+            path: audi-session
   backoffLimit: 120
 {{ end }}

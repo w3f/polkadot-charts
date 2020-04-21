@@ -40,6 +40,8 @@ data:
               {{- $grandpaSessionKeys := .Values.chainspec.addresses.session_grandpa }}
               {{- $babeSessionKeys := .Values.chainspec.addresses.session_babe }}
               {{- $imonlineSessionKeys := .Values.chainspec.addresses.session_imonline }}
+              {{- $parachainSessionKeys := .Values.chainspec.addresses.session_parachain }}
+              {{- $audiSessionKeys := .Values.chainspec.addresses.session_audi }}
 
               {{- range $index, $value := .Values.chainspec.addresses.stash }}
               [
@@ -48,9 +50,9 @@ data:
                 {
                   "grandpa": {{ index $grandpaSessionKeys $index | quote }},
                   "babe": {{ index $babeSessionKeys $index | quote }},
-                  "parachain_validator": {{ index $babeSessionKeys $index | quote }},
+                  "parachain_validator": {{ index $parachainSessionKeys $index | quote }},
                   "im_online": {{ index $imonlineSessionKeys $index | quote }},
-                  "authority_discovery": {{ index $babeSessionKeys $index | quote }}
+                  "authority_discovery": {{ index $audiSessionKeys $index | quote }}
                 }
               ]{{- if ne $index $lastIndex }},{{- end }}
               {{- end }}

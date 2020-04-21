@@ -24,6 +24,7 @@ keys:
   session_babe: "session_key"
   session_imonline: "session_key"
   session_parachain: "session_key"
+  session_audi: "session_key"
 
 bootNodes:
 - "/dns4/polkadot-node-0/tcp/30333/p2p/QmRpheLN4JWdAnY7HGJfWFNbfkQCb6tFf4vvA6hgjMZKrR"

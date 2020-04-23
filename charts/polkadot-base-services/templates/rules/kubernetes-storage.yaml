@@ -23,15 +23,15 @@ spec:
       for: 1m
       labels:
         severity: critical
-    - alert: KubePersistentVolumeFullInFourDays
+    - alert: KubePersistentVolumeFullInEightDays
       annotations:
         message: Based on recent sampling, the PersistentVolume claimed by {{`{{ $labels.persistentvolumeclaim
           }}`}} in Namespace {{`{{ $labels.namespace }}`}} is expected to fill up within four
           days. Currently {{`{{ $value }}`}} bytes are available.
         runbook_url: https://github.com/kubernetes-monitoring/kubernetes-mixin/tree/master/runbook.md#alert-name-kubepersistentvolumefullinfourdays
       expr: |
-        kubelet_volume_stats_available_bytes{job="kubelet"} and predict_linear(kubelet_volume_stats_available_bytes{job="kubelet"}[6h], 4 * 24 * 3600) < 0
-      for: 20m
+        kubelet_volume_stats_available_bytes{job="kubelet"} and predict_linear(kubelet_volume_stats_available_bytes{job="kubelet"}[6h], 8 * 24 * 3600) < 0
+      for: 40m
       labels:
         severity: critical
 {{ end }}

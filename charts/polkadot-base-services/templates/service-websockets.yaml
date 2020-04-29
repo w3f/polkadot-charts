@@ -12,5 +12,5 @@ spec:
   - name: websocket-rpc
     port: 9944
   selector:
-    node: polkadot-node-0
+    node: {{ .Values.name }}
 {{ end }}

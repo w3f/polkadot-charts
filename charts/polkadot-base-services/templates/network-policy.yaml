@@ -4,6 +4,10 @@ metadata:
   name: {{ .Release.Name }}
 spec:
   podSelector: {}
+  ingress:
+  - {}
+  egress:
+  - {}
   policyTypes:
   - Ingress
   - Egress

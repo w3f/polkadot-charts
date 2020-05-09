@@ -1,0 +1,149 @@
+rule_files:
+    - /dev/stdin
+
+evaluation_interval: 1m
+
+tests:
+    - interval: 1m
+      input_series:
+          - series: 'polkadot_sub_libp2p_peers_count{job="polkadot", pod="polkadot-abcdef01234-abcdef"}'
+            values: '3 2+0x4 1+0x9' # 3 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1
+          - series: 'polkadot_sub_txpool_validations_scheduled{job="polkadot", pod="polkadot-abcdef01234-abcdef"}'
+            values: '10+1x30' # 10 11 12 13 .. 40
+          - series: 'polkadot_block_height{status="best", job="polkadot", pod="polkadot-abcdef01234-abcdef"}'
+            values: '1+1x3 4+0x13' # 1 2 3 4 4 4 4 4 4 4 4 4 ...
+          - series: 'polkadot_block_height{status="finalized", job="polkadot", pod="polkadot-abcdef01234-abcdef"}'
+            values: '1+1x3 4+0x13' # 1 2 3 4 4 4 4 4 4 4 4 4 ...
+          - series: 'polkadot_cpu_usage_percentage{job="polkadot", pod="polkadot-abcdef01234-abcdef"}'
+            values: '0+20x5 100+0x5' # 0 20 40 60 80 100 100 100 100 100 100
+
+      alert_rule_test:
+          # Test LowNumberOfPeersShort alert
+          - eval_time: 3m # Values: 3 2 2
+            alertname: LowNumberOfPeersShort
+            exp_alerts:
+          - eval_time: 4m # Values: 2 2 2
+            alertname: LowNumberOfPeersShort
+            exp_alerts:
+                - exp_labels:
+                      severity: warning
+                      pod: polkadot-abcdef01234-abcdef
+                      job: polkadot
+                  exp_annotations:
+                      message: "The node has less than 3 peers for 3 minutes"
+
+          # Test LowNumberOfPeersLong alert
+          - eval_time: 15m # Values: 3 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1
+            alertname: LowNumberOfPeersLong
+            exp_alerts:
+          - eval_time: 16m # Values: 3 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1
+            alertname: LowNumberOfPeersLong
+            exp_alerts:
+                - exp_labels:
+                      severity: critical
+                      pod: polkadot-abcdef01234-abcdef
+                      job: polkadot
+                  exp_annotations:
+                      message: "The node has less than 3 peers for 15 minutes"
+
+          # Test TransactionQueueSizeShort alert
+          - eval_time: 10m
+            alertname: TransactionQueueSizeShort
+            exp_alerts:
+          - eval_time: 11m
+            alertname: TransactionQueueSizeShort
+            exp_alerts:
+                - exp_labels:
+                      severity: warning
+                      pod: polkadot-abcdef01234-abcdef
+                      job: polkadot
+                  exp_annotations:
+                      message: "The node has more than 10 transactions in the queue for more than 10 minutes"
+
+          # Test TransactionQueueSizeLong alert
+          - eval_time: 30m
+            alertname: TransactionQueueSizeLong
+            exp_alerts:
+          - eval_time: 31m
+            alertname: TransactionQueueSizeLong
+            exp_alerts:
+                - exp_labels:
+                      severity: critical
+                      pod: polkadot-abcdef01234-abcdef
+                      job: polkadot
+                  exp_annotations:
+                      message: "The node has more than 10 transactions in the queue for more than 30 minutes"
+
+          # Test LowNumberOfNewBlocksShort alert
+          - eval_time: 6m
+            alertname: LowNumberOfNewBlocksShort
+            exp_alerts:
+          - eval_time: 7m
+            alertname: LowNumberOfNewBlocksShort
+            exp_alerts:
+                - exp_labels:
+                      severity: warning
+                      pod: polkadot-abcdef01234-abcdef
+                      job: polkadot
+                      status: best
+                  exp_annotations:
+                      message: "The number of new blocks has not increased for the last 3 minutes"
+
+          # Test LowNumberOfNewBlocksLong alert
+          - eval_time: 13m
+            alertname: LowNumberOfNewBlocksLong
+            exp_alerts:
+          - eval_time: 14m
+            alertname: LowNumberOfNewBlocksLong
+            exp_alerts:
+                - exp_labels:
+                      severity: critical
+                      pod: polkadot-abcdef01234-abcdef
+                      job: polkadot
+                      status: best
+                  exp_annotations:
+                      message: "The number of new blocks has not increased for the last 10 minutes"
+
+          # Test LowNumberOfFinalizedBlocksShort alert
+          - eval_time: 6m
+            alertname: LowNumberOfFinalizedBlocksShort
+            exp_alerts:
+          - eval_time: 7m
+            alertname: LowNumberOfFinalizedBlocksShort
+            exp_alerts:
+                - exp_labels:
+                      severity: warning
+                      pod: polkadot-abcdef01234-abcdef
+                      job: polkadot
+                      status: finalized
+                  exp_annotations:
+                      message: "The number of finalized blocks has not increased for the last 3 minutes"
+
+          # Test LowNumberOfFinalizedBlocksLong alert
+          - eval_time: 13m
+            alertname: LowNumberOfFinalizedBlocksLong
+            exp_alerts:
+          - eval_time: 14m
+            alertname: LowNumberOfFinalizedBlocksLong
+            exp_alerts:
+                - exp_labels:
+                      severity: critical
+                      pod: polkadot-abcdef01234-abcdef
+                      job: polkadot
+                      status: finalized
+                  exp_annotations:
+                      message: "The number of finalized blocks has not increased for the last 10 minutes"
+
+          # Test HighCPUUsage alert
+          - eval_time: 9m
+            alertname: HighCPUUsage
+            exp_alerts:
+          - eval_time: 10m
+            alertname: HighCPUUsage
+            exp_alerts:
+                - exp_labels:
+                      severity: warning
+                      pod: polkadot-abcdef01234-abcdef
+                      job: polkadot
+                  exp_annotations:
+                      message: "The node has a CPU usage higher than 100% for 5 minutes"

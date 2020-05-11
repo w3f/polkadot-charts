@@ -1,0 +1,82 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ .Release.Name }}-alertrules
+  labels:
+    app: {{ .Release.Name }}
+spec:
+  groups:
+  - name: polkadot.rules
+    rules:
+    - alert: LowNumberOfPeersShort
+      annotations:
+        message: 'The node has less than 3 peers for 3 minutes'
+        # runbook_url: "https://github.com/w3f/infrastructure/wiki/<LINK>"
+      expr: polkadot_sub_libp2p_peers_count < 3
+      for: 3m
+      labels:
+        severity: warning
+    - alert: LowNumberOfPeersLong
+      annotations:
+        message: 'The node has less than 3 peers for 15 minutes'
+        # runbook_url: "https://github.com/w3f/infrastructure/wiki/<LINK>"
+      expr: polkadot_sub_libp2p_peers_count < 3
+      for: 15m
+      labels:
+        severity: critical
+    - alert: TransactionQueueSizeShort
+      annotations:
+        message: 'The node has more than 10 transactions in the queue for more than 10 minutes'
+        # runbook_url: "https://github.com/w3f/infrastructure/wiki/<LINK>"
+      expr: polkadot_sub_txpool_validations_scheduled > 10
+      for: 10m
+      labels:
+        severity: warning
+    - alert: TransactionQueueSizeLong
+      annotations:
+        message: 'The node has more than 10 transactions in the queue for more than 30 minutes'
+        # runbook_url: "https://github.com/w3f/infrastructure/wiki/<LINK>"
+      expr: polkadot_sub_txpool_validations_scheduled > 10
+      for: 30m
+      labels:
+        severity: critical
+    - alert: LowNumberOfNewBlocksShort
+      annotations:
+        message: 'The number of new blocks has not increased for the last 3 minutes'
+        # runbook_url: "https://github.com/w3f/infrastructure/wiki/<LINK>"
+      expr: increase(polkadot_block_height{status="best"}[1m]) == 0
+      for: 3m
+      labels:
+        severity: warning
+    - alert: LowNumberOfNewBlocksLong
+      annotations:
+        message: 'The number of new blocks has not increased for the last 10 minutes'
+        # runbook_url: "https://github.com/w3f/infrastructure/wiki/<LINK>"
+      expr: increase(polkadot_block_height{status="best"}[1m]) == 0
+      for: 10m
+      labels:
+        severity: critical
+    - alert: LowNumberOfFinalizedBlocksShort
+      annotations:
+        message: 'The number of finalized blocks has not increased for the last 3 minutes'
+        # runbook_url: "https://github.com/w3f/infrastructure/wiki/<LINK>"
+      expr: increase(polkadot_block_height{status="finalized"}[1m]) == 0
+      for: 3m
+      labels:
+        severity: warning
+    - alert: LowNumberOfFinalizedBlocksLong
+      annotations:
+        message: 'The number of finalized blocks has not increased for the last 10 minutes'
+        # runbook_url: "https://github.com/w3f/infrastructure/wiki/<LINK>"
+      expr: increase(polkadot_block_height{status="finalized"}[1m]) == 0
+      for: 10m
+      labels:
+        severity: critical
+    - alert: HighCPUUsage
+      annotations:
+        message: 'The node has a CPU usage higher than 100% for 5 minutes'
+        # runbook_url: "https://github.com/w3f/infrastructure/wiki/<LINK>"
+      expr: polkadot_cpu_usage_percentage >= 100
+      for: 5m
+      labels:
+        severity: warning

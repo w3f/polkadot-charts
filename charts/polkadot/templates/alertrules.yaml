@@ -1,9 +1,10 @@
+{{ if .Values.monitoring }}
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
   name: {{ .Release.Name }}-alertrules
   labels:
-    app: {{ .Release.Name }}
+    app: polkadot
 spec:
   groups:
   - name: polkadot.rules
@@ -80,3 +81,4 @@ spec:
       for: 5m
       labels:
         severity: warning
+{{ end }}

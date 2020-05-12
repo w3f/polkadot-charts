@@ -118,6 +118,9 @@ spec:
         {{- if .Values.extraArgs.common }}
           {{ .Values.extraArgs.common }}
         {{- end }}
+        {{- if .Values.monitoring }}
+          --prometheus-external
+        {{- end }}
         {{- range $value := .Values.extraBootnodes }}
           --bootnodes={{ $value }}
         {{- end }}
@@ -128,6 +131,8 @@ spec:
           name: http-rpc
         - containerPort: 9944
           name: websocket-rpc
+        - containerPort: {{ .Values.metricsPort }}
+          name: metrics
         readinessProbe:
           failureThreshold: 100
           httpGet:

@@ -8,5 +8,7 @@ spec:
   ports:
   - port: {{ .Values.rpcPort }}
     name: http-rpc
+  - port: {{ .Values.metricsPort }}
+    name: metrics
   selector:
     node: {{ .Release.Name }}

@@ -9,5 +9,5 @@ for file in $(find "${TEST_FOLDER}" -name *yaml | sed 's|^'"${TEST_FOLDER}"/'||'
     template_name=${file##*/}
 
     helm template -x "templates/${template_name}" "charts/${chart_name}" | yq r - spec | promtool check rules /dev/stdin
-    helm template -x "templates/${template_name}" "charts/${chart_name}" | yq r - spec | promtool test rules "${TEST_FOLDER}/${chart_name}/${template_name}"
+    helm template --set monitoring=true -x "templates/${template_name}" "charts/${chart_name}" | yq r - spec | promtool test rules "${TEST_FOLDER}/${chart_name}/${template_name}"
 done

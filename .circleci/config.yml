@@ -3,7 +3,7 @@ version: 2
 jobs:
   buildImage:
     docker:
-      - image: web3f/ci-commons:v1.6.0
+      - image: web3f/ci-commons:v2.1.3
     steps:
       - checkout
       - setup_remote_docker
@@ -13,7 +13,7 @@ jobs:
 
   publishChart:
     docker:
-      - image: web3f/ci-commons:v1.6.0
+      - image: web3f/ci-commons:v2.1.3
     steps:
       - checkout
       - run:
@@ -22,7 +22,7 @@ jobs:
 
   testPrometheusRules:
     docker:
-      - image: web3f/ci-commons:v1.6.0
+      - image: web3f/ci-commons:v2.1.3
     steps:
       - checkout
       - run:

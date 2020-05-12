@@ -1,0 +1,14 @@
+{{ if .Values.monitoring }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    release: prometheus-operator
+spec:
+  selector:
+    matchLabels:
+      node: {{ .Release.Name }}
+  endpoints:
+  - port: metrics
+{{ end }}

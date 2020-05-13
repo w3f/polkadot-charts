@@ -47,14 +47,15 @@ workflows:
     jobs:
       - buildImage:
           filters:
-            branches:
-              only: /master/
+            tags:
+              only: /.*/
       - testPrometheusRules:
           filters:
             tags:
               only: /.*/
       - publishChart:
           requires:
+            - buildImage
             - testPrometheusRules
           filters:
             branches:

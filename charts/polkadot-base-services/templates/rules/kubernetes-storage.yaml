@@ -23,6 +23,7 @@ spec:
       for: 1m
       labels:
         severity: critical
+        origin: {{ .Values.deploymentName }}
     - alert: KubePersistentVolumeFullInEightDays
       annotations:
         message: Based on recent sampling, the PersistentVolume claimed by {{`{{ $labels.persistentvolumeclaim
@@ -34,4 +35,5 @@ spec:
       for: 40m
       labels:
         severity: critical
+        origin: {{ .Values.deploymentName }}
 {{ end }}

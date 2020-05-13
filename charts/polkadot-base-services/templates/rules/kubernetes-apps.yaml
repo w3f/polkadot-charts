@@ -19,6 +19,7 @@ spec:
       for: 1h
       labels:
         severity: critical
+        origin: {{ .Values.deploymentName }}
     - alert: KubePodNotReady
       annotations:
         message: Pod {{`{{ $labels.namespace }}`}}/{{`{{ $labels.pod }}`}} has been in a non-ready
@@ -29,6 +30,7 @@ spec:
       for: 1h
       labels:
         severity: critical
+        origin: {{ .Values.deploymentName }}
     - alert: KubeDeploymentGenerationMismatch
       annotations:
         message: Deployment generation for {{`{{ $labels.namespace }}`}}/{{`{{ $labels.deployment
@@ -42,6 +44,7 @@ spec:
       for: 15m
       labels:
         severity: critical
+        origin: {{ .Values.deploymentName }}
     - alert: KubeDeploymentReplicasMismatch
       annotations:
         message: Deployment {{`{{ $labels.namespace }}`}}/{{`{{ $labels.deployment }}`}} has not
@@ -54,6 +57,7 @@ spec:
       for: 1h
       labels:
         severity: critical
+        origin: {{ .Values.deploymentName }}
     - alert: KubeStatefulSetReplicasMismatch
       annotations:
         message: StatefulSet {{`{{ $labels.namespace }}`}}/{{`{{ $labels.statefulset }}`}} has not
@@ -66,6 +70,7 @@ spec:
       for: 15m
       labels:
         severity: critical
+        origin: {{ .Values.deploymentName }}
     - alert: KubeStatefulSetGenerationMismatch
       annotations:
         message: StatefulSet generation for {{`{{ $labels.namespace }}`}}/{{`{{ $labels.statefulset
@@ -79,6 +84,7 @@ spec:
       for: 15m
       labels:
         severity: critical
+        origin: {{ .Values.deploymentName }}
     - alert: KubeStatefulSetUpdateNotRolledOut
       annotations:
         message: StatefulSet {{`{{ $labels.namespace }}`}}/{{`{{ $labels.statefulset }}`}} update
@@ -99,6 +105,7 @@ spec:
       for: 15m
       labels:
         severity: critical
+        origin: {{ .Values.deploymentName }}
     - alert: KubeDaemonSetRolloutStuck
       annotations:
         message: Only {{`{{ $value }}`}}% of the desired Pods of DaemonSet {{`{{ $labels.namespace
@@ -111,6 +118,7 @@ spec:
       for: 15m
       labels:
         severity: critical
+        origin: {{ .Values.deploymentName }}
     - alert: KubeDaemonSetNotScheduled
       annotations:
         message: '{{`{{ $value }}`}} Pods of DaemonSet {{`{{ $labels.namespace }}`}}/{{`{{ $labels.daemonset
@@ -123,6 +131,7 @@ spec:
       for: 10m
       labels:
         severity: warning
+        origin: {{ .Values.deploymentName }}
     - alert: KubeDaemonSetMisScheduled
       annotations:
         message: '{{`{{ $value }}`}} Pods of DaemonSet {{`{{ $labels.namespace }}`}}/{{`{{ $labels.daemonset
@@ -133,6 +142,7 @@ spec:
       for: 10m
       labels:
         severity: warning
+        origin: {{ .Values.deploymentName }}
     - alert: KubeCronJobRunning
       annotations:
         message: CronJob {{`{{ $labels.namespaces }}`}}/{{`{{ $labels.cronjob }}`}} is taking more
@@ -143,6 +153,7 @@ spec:
       for: 1h
       labels:
         severity: warning
+        origin: {{ .Values.deploymentName }}
     - alert: KubeJobCompletion
       annotations:
         message: Job {{`{{ $labels.namespaces }}`}}/{{`{{ $labels.job }}`}} is taking more than
@@ -153,4 +164,5 @@ spec:
       for: 1h
       labels:
         severity: warning
+        origin: {{ .Values.deploymentName }}
 {{ end }}

@@ -18,6 +18,7 @@ spec:
       for: 30m
       labels:
         severity: warning
+        origin: {{ .Values.deploymentName }}
     - alert: NodeDiskRunningFull
       annotations:
         message: Device {{`{{ $labels.device }}`}} of node-exporter {{`{{ $labels.namespace }}`}}/{{`{{
@@ -27,4 +28,5 @@ spec:
       for: 10m
       labels:
         severity: critical
+        origin: {{ .Values.deploymentName }}
 {{ end }}

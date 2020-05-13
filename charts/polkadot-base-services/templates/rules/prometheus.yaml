@@ -28,6 +28,7 @@ spec:
       for: 10m
       labels:
         severity: warning
+        origin: {{ .Values.deploymentName }}
     - alert: PrometheusErrorSendingAlerts
       annotations:
         description: Errors while sending alerts from Prometheus {{`{{$labels.namespace}}`}}/{{`{{
@@ -38,6 +39,7 @@ spec:
       for: 10m
       labels:
         severity: warning
+        origin: {{ .Values.deploymentName }}
     - alert: PrometheusErrorSendingAlerts
       annotations:
         description: Errors while sending alerts from Prometheus {{`{{$labels.namespace}}`}}/{{`{{
@@ -48,6 +50,7 @@ spec:
       for: 10m
       labels:
         severity: critical
+        origin: {{ .Values.deploymentName }}
     - alert: PrometheusNotConnectedToAlertmanagers
       annotations:
         description: Prometheus {{`{{ $labels.namespace }}`}}/{{`{{ $labels.pod}}`}} is not connected
@@ -58,6 +61,7 @@ spec:
       for: 10m
       labels:
         severity: warning
+        origin: {{ .Values.deploymentName }}
     - alert: PrometheusTSDBReloadsFailing
       annotations:
         description: '{{`{{$labels.job}}`}} at {{`{{$labels.instance}}`}} had {{`{{$value | humanize}}`}}
@@ -68,6 +72,7 @@ spec:
       for: 12h
       labels:
         severity: warning
+        origin: {{ .Values.deploymentName }}
     - alert: PrometheusTSDBCompactionsFailing
       annotations:
         description: '{{`{{$labels.job}}`}} at {{`{{$labels.instance}}`}} had {{`{{$value | humanize}}`}}
@@ -78,6 +83,7 @@ spec:
       for: 12h
       labels:
         severity: warning
+        origin: {{ .Values.deploymentName }}
     - alert: PrometheusTSDBWALCorruptions
       annotations:
         description: '{{`{{$labels.job}}`}} at {{`{{$labels.instance}}`}} has a corrupted write-ahead
@@ -88,6 +94,7 @@ spec:
       for: 4h
       labels:
         severity: warning
+        origin: {{ .Values.deploymentName }}
     - alert: PrometheusNotIngestingSamples
       annotations:
         description: Prometheus {{`{{ $labels.namespace }}`}}/{{`{{ $labels.pod}}`}} isn't ingesting
@@ -98,6 +105,7 @@ spec:
       for: 10m
       labels:
         severity: warning
+        origin: {{ .Values.deploymentName }}
     - alert: PrometheusTargetScrapesDuplicate
       annotations:
         description: '{{`{{$labels.namespace}}`}}/{{`{{$labels.pod}}`}} has many samples rejected
@@ -108,4 +116,5 @@ spec:
       for: 10m
       labels:
         severity: warning
+        origin: {{ .Values.deploymentName }}
 {{ end }}

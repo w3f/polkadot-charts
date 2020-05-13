@@ -18,6 +18,7 @@ spec:
       for: 15m
       labels:
         severity: critical
+        origin: {{ .Values.deploymentName }}
     - alert: KubeStateMetricsDown
       annotations:
         message: KubeStateMetrics has disappeared from Prometheus target discovery.
@@ -27,6 +28,7 @@ spec:
       for: 15m
       labels:
         severity: critical
+        origin: {{ .Values.deploymentName }}
     - alert: KubeletDown
       annotations:
         message: Kubelet has disappeared from Prometheus target discovery.
@@ -36,6 +38,7 @@ spec:
       for: 15m
       labels:
         severity: critical
+        origin: {{ .Values.deploymentName }}
     - alert: NodeExporterDown
       annotations:
         message: NodeExporter has disappeared from Prometheus target discovery.
@@ -45,6 +48,7 @@ spec:
       for: 15m
       labels:
         severity: critical
+        origin: {{ .Values.deploymentName }}
     - alert: PrometheusDown
       annotations:
         message: Prometheus has disappeared from Prometheus target discovery.
@@ -54,6 +58,7 @@ spec:
       for: 15m
       labels:
         severity: critical
+        origin: {{ .Values.deploymentName }}
     - alert: PrometheusOperatorDown
       annotations:
         message: PrometheusOperator has disappeared from Prometheus target discovery.
@@ -63,4 +68,5 @@ spec:
       for: 15m
       labels:
         severity: critical
+        origin: {{ .Values.deploymentName }}
 {{ end }}

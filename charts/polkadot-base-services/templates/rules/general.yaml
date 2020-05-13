@@ -16,4 +16,5 @@ spec:
       for: 10m
       labels:
         severity: warning
+        origin: {{ .Values.deploymentName }}
 {{ end }}

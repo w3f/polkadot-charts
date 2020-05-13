@@ -29,4 +29,3 @@ RUN ./polkadot build-spec --chain dev > ./base_chainspec_dev.json && \
   rm ./polkadot
 
 COPY scripts/ .
-COPY chainspecs/ .

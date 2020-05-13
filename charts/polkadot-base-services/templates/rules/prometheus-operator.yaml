@@ -17,6 +17,7 @@ spec:
       for: 10m
       labels:
         severity: warning
+        origin: {{ .Values.deploymentName }}
     - alert: PrometheusOperatorPrometheusReconcileErrors
       annotations:
         message: Errors while reconciling Prometheus in {{`{{ $labels.namespace }}`}} Namespace.
@@ -25,6 +26,7 @@ spec:
       for: 10m
       labels:
         severity: warning
+        origin: {{ .Values.deploymentName }}
     - alert: PrometheusOperatorNodeLookupErrors
       annotations:
         message: Errors while reconciling Prometheus in {{`{{ $labels.namespace }}`}} Namespace.
@@ -33,4 +35,5 @@ spec:
       for: 10m
       labels:
         severity: warning
+        origin: {{ .Values.deploymentName }}
 {{ end }}

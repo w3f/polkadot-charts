@@ -18,6 +18,7 @@ spec:
       for: 1h
       labels:
         severity: warning
+        origin: {{ .Values.deploymentName }}
     - alert: KubeClientErrors
       annotations:
         message: Kubernetes API server client '{{`{{ $labels.job }}`}}/{{`{{ $labels.instance
@@ -31,6 +32,7 @@ spec:
       for: 15m
       labels:
         severity: warning
+        origin: {{ .Values.deploymentName }}
     - alert: KubeClientErrors
       annotations:
         message: Kubernetes API server client '{{`{{ $labels.job }}`}}/{{`{{ $labels.instance
@@ -41,6 +43,7 @@ spec:
       for: 15m
       labels:
         severity: warning
+        origin: {{ .Values.deploymentName }}
     - alert: KubeletTooManyPods
       annotations:
         message: Kubelet {{`{{ $labels.instance }}`}} is running {{`{{ $value }}`}} Pods, close
@@ -51,6 +54,7 @@ spec:
       for: 15m
       labels:
         severity: warning
+        origin: {{ .Values.deploymentName }}
     - alert: KubeAPILatencyHigh
       annotations:
         message: The API server has a 99th percentile latency of {{`{{ $value }}`}} seconds
@@ -61,6 +65,7 @@ spec:
       for: 10m
       labels:
         severity: warning
+        origin: {{ .Values.deploymentName }}
     - alert: KubeAPILatencyHigh
       annotations:
         message: The API server has a 99th percentile latency of {{`{{ $value }}`}} seconds
@@ -71,6 +76,7 @@ spec:
       for: 10m
       labels:
         severity: critical
+        origin: {{ .Values.deploymentName }}
     - alert: KubeAPIErrorsHigh
       annotations:
         message: API server is returning errors for {{`{{ $value }}`}}% of requests.
@@ -82,6 +88,7 @@ spec:
       for: 10m
       labels:
         severity: critical
+        origin: {{ .Values.deploymentName }}
     - alert: KubeAPIErrorsHigh
       annotations:
         message: API server is returning errors for {{`{{ $value }}`}}% of requests.
@@ -93,4 +100,5 @@ spec:
       for: 10m
       labels:
         severity: warning
+        origin: {{ .Values.deploymentName }}
 {{ end }}

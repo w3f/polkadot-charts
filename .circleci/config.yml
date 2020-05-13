@@ -49,7 +49,10 @@ workflows:
           filters:
             branches:
               only: /master/
-      - testPrometheusRules
+      - testPrometheusRules:
+          filters:
+            tags:
+              only: /.*/
       - publishChart:
           requires:
             - testPrometheusRules

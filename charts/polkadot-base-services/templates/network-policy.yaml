@@ -6,7 +6,7 @@ spec:
   podSelector: {}
   ingress:
   - ports:
-    - protocol: tcp
+    - protocol: TCP
   egress:
   - {}
   policyTypes:

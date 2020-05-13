@@ -5,7 +5,8 @@ metadata:
 spec:
   podSelector: {}
   ingress:
-  - {}
+  - ports:
+    - protocol: tcp
   egress:
   - {}
   policyTypes:

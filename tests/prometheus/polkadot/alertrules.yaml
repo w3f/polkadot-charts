@@ -11,7 +11,7 @@ tests:
           - series: 'polkadot_sub_txpool_validations_scheduled{job="polkadot", pod="polkadot-abcdef01234-abcdef"}'
             values: '10+1x30' # 10 11 12 13 .. 40
           - series: 'polkadot_sub_txpool_validations_finished{job="polkadot", pod="polkadot-abcdef01234-abcdef"}'
-            values: '0x30' # 10 11 12 13 .. 40
+            values: '0x30' # 0 0 0 0 .. 0
           - series: 'polkadot_block_height{status="best", job="polkadot", pod="polkadot-abcdef01234-abcdef"}'
             values: '1+1x3 4+0x13' # 1 2 3 4 4 4 4 4 4 4 4 4 ...
           - series: 'polkadot_block_height{status="finalized", job="polkadot", pod="polkadot-abcdef01234-abcdef"}'

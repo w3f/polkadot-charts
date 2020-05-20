@@ -31,7 +31,7 @@ spec:
       annotations:
         message: 'The node has more than 10 transactions in the queue for more than 10 minutes'
         # runbook_url: "https://github.com/w3f/infrastructure/wiki/<LINK>"
-      expr: polkadot_sub_txpool_validations_scheduled > 10
+      expr: polkadot_sub_txpool_validations_scheduled - polkadot_sub_txpool_validations_finished > 10
       for: 10m
       labels:
         severity: warning
@@ -40,7 +40,7 @@ spec:
       annotations:
         message: 'The node has more than 10 transactions in the queue for more than 30 minutes'
         # runbook_url: "https://github.com/w3f/infrastructure/wiki/<LINK>"
-      expr: polkadot_sub_txpool_validations_scheduled > 10
+      expr: polkadot_sub_txpool_validations_scheduled - polkadot_sub_txpool_validations_finished > 10
       for: 30m
       labels:
         severity: critical

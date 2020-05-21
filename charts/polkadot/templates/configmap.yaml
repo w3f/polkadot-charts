@@ -8,8 +8,8 @@ data:
     {{- $totalItems := len .Values.chainspec.addresses.stash }}
     {{- $lastIndex := sub $totalItems 1 }}
     {
-      "name": {{ .Values.deploymentName | quote }},
-      "id": {{ .Values.deploymentName | quote }},
+      "name": {{ .Values.networkName | quote }},
+      "id": {{ .Values.networkName | quote }},
       "bootNodes": [
         {{- $lastBootIndex := sub (len .Values.bootNodes) 1}}
         {{- range $index, $value := .Values.bootNodes }}

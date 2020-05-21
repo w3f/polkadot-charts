@@ -29,7 +29,7 @@ tests:
             exp_alerts:
                 - exp_labels:
                       severity: warning
-                      origin: testnet
+                      origin: testnet-0
                       pod: polkadot-abcdef01234-abcdef
                       job: polkadot
                   exp_annotations:
@@ -44,7 +44,7 @@ tests:
             exp_alerts:
                 - exp_labels:
                       severity: critical
-                      origin: testnet
+                      origin: testnet-0
                       pod: polkadot-abcdef01234-abcdef
                       job: polkadot
                   exp_annotations:
@@ -59,7 +59,7 @@ tests:
             exp_alerts:
                 - exp_labels:
                       severity: warning
-                      origin: testnet
+                      origin: testnet-0
                       pod: polkadot-abcdef01234-abcdef
                       job: polkadot
                   exp_annotations:
@@ -74,7 +74,7 @@ tests:
             exp_alerts:
                 - exp_labels:
                       severity: critical
-                      origin: testnet
+                      origin: testnet-0
                       pod: polkadot-abcdef01234-abcdef
                       job: polkadot
                   exp_annotations:
@@ -89,7 +89,7 @@ tests:
             exp_alerts:
                 - exp_labels:
                       severity: warning
-                      origin: testnet
+                      origin: testnet-0
                       pod: polkadot-abcdef01234-abcdef
                       job: polkadot
                       status: best
@@ -105,7 +105,7 @@ tests:
             exp_alerts:
                 - exp_labels:
                       severity: critical
-                      origin: testnet
+                      origin: testnet-0
                       pod: polkadot-abcdef01234-abcdef
                       job: polkadot
                       status: best
@@ -121,7 +121,7 @@ tests:
             exp_alerts:
                 - exp_labels:
                       severity: warning
-                      origin: testnet
+                      origin: testnet-0
                       pod: polkadot-abcdef01234-abcdef
                       job: polkadot
                       status: finalized
@@ -137,7 +137,7 @@ tests:
             exp_alerts:
                 - exp_labels:
                       severity: critical
-                      origin: testnet
+                      origin: testnet-0
                       pod: polkadot-abcdef01234-abcdef
                       job: polkadot
                       status: finalized
@@ -153,7 +153,7 @@ tests:
             exp_alerts:
                 - exp_labels:
                       severity: warning
-                      origin: testnet
+                      origin: testnet-0
                       pod: polkadot-abcdef01234-abcdef
                       job: polkadot
                   exp_annotations:

@@ -6,8 +6,9 @@ initImage:
   repo: web3f/polkadot-deployer
   tag: 5c68036acff0ce82faa179f29e9bbbf702dd3964
 
-name: testnet-0
-deploymentName: testnet
+name: testnet-0-0
+deploymentName: testnet-0
+networkName: testnet
 
 chainspec:
   preset: false

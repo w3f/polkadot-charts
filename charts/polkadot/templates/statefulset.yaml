@@ -92,6 +92,7 @@ spec:
           {{- if .Values.unsafeEndpointAccess }}
           --unsafe-rpc-external
           --unsafe-ws-external
+          --rpc-methods=Unsafe
           {{- else }}
           --rpc-external
           --ws-external

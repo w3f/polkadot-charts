@@ -77,3 +77,9 @@ unsafeEndpointAccess: true
 binaryName: polkadot
 
 monitoring: false
+
+alertRulesLabels:
+  app: polkadot
+
+serviceMonitorLabels:
+  release: prometheus-operator

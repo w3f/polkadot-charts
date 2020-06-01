@@ -4,6 +4,7 @@ kind: ServiceMonitor
 metadata:
   name: {{ .Release.Name }}
   labels:
+{{ toYaml .Values.serviceMonitorLabels | indent 4 }}
     release: prometheus-operator
 spec:
   selector:

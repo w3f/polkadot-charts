@@ -4,7 +4,7 @@ kind: PrometheusRule
 metadata:
   name: {{ .Release.Name }}-alertrules
   labels:
-    app: polkadot
+{{ toYaml .Values.alertRulesLabels | indent 4 }}
 spec:
   groups:
   - name: polkadot.rules

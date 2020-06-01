@@ -3,7 +3,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
   labels:
-    app: polkadot
+{{ toYaml .Values.alertRulesLabels | indent 4 }}
   name: k8s
 spec:
   groups:

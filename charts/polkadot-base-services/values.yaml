@@ -22,3 +22,6 @@ grafanaWhiteListSourceRange: "0.0.0.0/0"
 createCertIssuer: true
 
 createBootNodeService: true
+
+alertRulesLabels:
+  app: polkadot

@@ -13,6 +13,11 @@
 {{ .Release.Name }}
 {{- end }}
 
+{{/* Returns the Grafana TLS secret name */}}
+{{- define "polkadot-deployer.grafanaTlsSecretName" -}}
+{{ .Release.Name }}-grafana-tls
+{{- end }}
+
 {{/* Returns the session key secret name */}}
 {{- define "polkadot-deployer.sessionKey" -}}
 {{ .Release.Name }}-session-key

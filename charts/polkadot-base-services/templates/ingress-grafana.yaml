@@ -14,7 +14,7 @@ spec:
   tls:
   - hosts:
       - {{ include "polkadot-deployer.grafanaDomain" . }}
-    secretName: {{ include "polkadot-deployer.tlsSecretName" . }}
+    secretName: {{ include "polkadot-deployer.grafanaTlsSecretName" . }}
   rules:
   - host: {{ include "polkadot-deployer.grafanaDomain" . }}
     http:

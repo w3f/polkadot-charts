@@ -9,7 +9,18 @@ spec:
     name: letsencrypt
   dnsNames:
   - {{ include "polkadot-deployer.websocketsDomain" . }}
-  {{- if .Values.monitoring }}
+{{ end }}
+---
+{{- if .Values.monitoring }}
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: grafana-tls
+  namespace: {{ .Values.grafana.namespace }}
+spec:
+  secretName: {{ include "polkadot-deployer.grafanaTlsSecretName" . }}
+  issuerRef:
+    name: letsencrypt
+  dnsNames:
   - {{ include "polkadot-deployer.grafanaDomain" . }}
-  {{- end }}
 {{ end }}

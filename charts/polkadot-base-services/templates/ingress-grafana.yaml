@@ -3,11 +3,12 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ .Release.Name }}-grafana
+  namespace: {{ .Values.grafana.namespace }}
   annotations:
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/limit-rps: "10"
-    {{- if .Values.grafanaWhitelistSourceRange }}
-    ingress.kubernetes.io/whitelist-source-range: {{ .Values.grafanaWhitelistSourceRange }}
+    {{- if .Values.grafana.whitelistSourceRange }}
+    ingress.kubernetes.io/whitelist-source-range: {{ .Values.grafana.whitelistSourceRange }}
     {{- end }}
 spec:
   tls:

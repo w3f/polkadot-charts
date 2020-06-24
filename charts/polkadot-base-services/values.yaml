@@ -1,4 +1,4 @@
-name: testnet
+websocketsSelector: testnet
 deploymentName: testnetDeployment
 
 domain: polkadot.w3f.tech

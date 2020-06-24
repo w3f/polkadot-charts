@@ -16,7 +16,6 @@ chainspec:
   basePath: "/chainspec"
   name: "chainspec.json"
   addresses:
-    session: ["session_key_1", "session_key2"]
     stash: ["stash_key_1", "stash_key2"]
     controller: ["controller_key_1", "controller_key2"]
 

@@ -22,10 +22,10 @@ tests:
       alert_rule_test:
           # Test LowNumberOfPeersShort alert
           - eval_time: 3m # Values: 3 2 2
-            alertname: LowNumberOfPeersShort
+            alertname: PolkadotLowNumberOfPeersShort
             exp_alerts:
           - eval_time: 4m # Values: 2 2 2
-            alertname: LowNumberOfPeersShort
+            alertname: PolkadotLowNumberOfPeersShort
             exp_alerts:
                 - exp_labels:
                       severity: warning
@@ -37,10 +37,10 @@ tests:
 
           # Test LowNumberOfPeersLong alert
           - eval_time: 15m # Values: 3 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1
-            alertname: LowNumberOfPeersLong
+            alertname: PolkadotLowNumberOfPeersLong
             exp_alerts:
           - eval_time: 16m # Values: 3 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1
-            alertname: LowNumberOfPeersLong
+            alertname: PolkadotLowNumberOfPeersLong
             exp_alerts:
                 - exp_labels:
                       severity: critical
@@ -52,10 +52,10 @@ tests:
 
           # Test TransactionQueueSizeShort alert
           - eval_time: 10m
-            alertname: TransactionQueueSizeShort
+            alertname: PolkadotTransactionQueueSizeShort
             exp_alerts:
           - eval_time: 11m
-            alertname: TransactionQueueSizeShort
+            alertname: PolkadotTransactionQueueSizeShort
             exp_alerts:
                 - exp_labels:
                       severity: warning
@@ -67,10 +67,10 @@ tests:
 
           # Test TransactionQueueSizeLong alert
           - eval_time: 30m
-            alertname: TransactionQueueSizeLong
+            alertname: PolkadotTransactionQueueSizeLong
             exp_alerts:
           - eval_time: 31m
-            alertname: TransactionQueueSizeLong
+            alertname: PolkadotTransactionQueueSizeLong
             exp_alerts:
                 - exp_labels:
                       severity: critical
@@ -82,10 +82,10 @@ tests:
 
           # Test LowNumberOfNewBlocksShort alert
           - eval_time: 6m
-            alertname: LowNumberOfNewBlocksShort
+            alertname: PolkadotLowNumberOfNewBlocksShort
             exp_alerts:
           - eval_time: 7m
-            alertname: LowNumberOfNewBlocksShort
+            alertname: PolkadotLowNumberOfNewBlocksShort
             exp_alerts:
                 - exp_labels:
                       severity: warning
@@ -98,10 +98,10 @@ tests:
 
           # Test LowNumberOfNewBlocksLong alert
           - eval_time: 13m
-            alertname: LowNumberOfNewBlocksLong
+            alertname: PolkadotLowNumberOfNewBlocksLong
             exp_alerts:
           - eval_time: 14m
-            alertname: LowNumberOfNewBlocksLong
+            alertname: PolkadotLowNumberOfNewBlocksLong
             exp_alerts:
                 - exp_labels:
                       severity: critical
@@ -114,10 +114,10 @@ tests:
 
           # Test LowNumberOfFinalizedBlocksShort alert
           - eval_time: 6m
-            alertname: LowNumberOfFinalizedBlocksShort
+            alertname: PolkadotLowNumberOfFinalizedBlocksShort
             exp_alerts:
           - eval_time: 7m
-            alertname: LowNumberOfFinalizedBlocksShort
+            alertname: PolkadotLowNumberOfFinalizedBlocksShort
             exp_alerts:
                 - exp_labels:
                       severity: warning
@@ -130,10 +130,10 @@ tests:
 
           # Test LowNumberOfFinalizedBlocksLong alert
           - eval_time: 13m
-            alertname: LowNumberOfFinalizedBlocksLong
+            alertname: PolkadotLowNumberOfFinalizedBlocksLong
             exp_alerts:
           - eval_time: 14m
-            alertname: LowNumberOfFinalizedBlocksLong
+            alertname: PolkadotLowNumberOfFinalizedBlocksLong
             exp_alerts:
                 - exp_labels:
                       severity: critical
@@ -143,18 +143,3 @@ tests:
                       status: finalized
                   exp_annotations:
                       message: "The number of finalized blocks has not increased for the last 10 minutes"
-
-          # Test HighCPUUsage alert
-          - eval_time: 9m
-            alertname: HighCPUUsage
-            exp_alerts:
-          - eval_time: 10m
-            alertname: HighCPUUsage
-            exp_alerts:
-                - exp_labels:
-                      severity: warning
-                      origin: testnet-0
-                      pod: polkadot-abcdef01234-abcdef
-                      job: polkadot
-                  exp_annotations:
-                      message: "The node has a CPU usage higher than 100% for 5 minutes"

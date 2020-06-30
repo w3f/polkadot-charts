@@ -9,7 +9,7 @@ spec:
   groups:
   - name: polkadot.rules
     rules:
-    - alert: LowNumberOfPeersShort
+    - alert: PolkadotLowNumberOfPeersShort
       annotations:
         message: 'The node has less than 3 peers for 3 minutes'
         # runbook_url: "https://github.com/w3f/infrastructure/wiki/<LINK>"
@@ -18,7 +18,7 @@ spec:
       labels:
         severity: warning
         origin: {{ .Values.deploymentName }}
-    - alert: LowNumberOfPeersLong
+    - alert: PolkadotLowNumberOfPeersLong
       annotations:
         message: 'The node has less than 3 peers for 15 minutes'
         # runbook_url: "https://github.com/w3f/infrastructure/wiki/<LINK>"
@@ -27,7 +27,7 @@ spec:
       labels:
         severity: critical
         origin: {{ .Values.deploymentName }}
-    - alert: TransactionQueueSizeShort
+    - alert: PolkadotTransactionQueueSizeShort
       annotations:
         message: 'The node has more than 10 transactions in the queue for more than 10 minutes'
         # runbook_url: "https://github.com/w3f/infrastructure/wiki/<LINK>"
@@ -36,7 +36,7 @@ spec:
       labels:
         severity: warning
         origin: {{ .Values.deploymentName }}
-    - alert: TransactionQueueSizeLong
+    - alert: PolkadotTransactionQueueSizeLong
       annotations:
         message: 'The node has more than 10 transactions in the queue for more than 30 minutes'
         # runbook_url: "https://github.com/w3f/infrastructure/wiki/<LINK>"
@@ -45,7 +45,7 @@ spec:
       labels:
         severity: critical
         origin: {{ .Values.deploymentName }}
-    - alert: LowNumberOfNewBlocksShort
+    - alert: PolkadotLowNumberOfNewBlocksShort
       annotations:
         message: 'The number of new blocks has not increased for the last 3 minutes'
         # runbook_url: "https://github.com/w3f/infrastructure/wiki/<LINK>"
@@ -54,7 +54,7 @@ spec:
       labels:
         severity: warning
         origin: {{ .Values.deploymentName }}
-    - alert: LowNumberOfNewBlocksLong
+    - alert: PolkadotLowNumberOfNewBlocksLong
       annotations:
         message: 'The number of new blocks has not increased for the last 10 minutes'
         # runbook_url: "https://github.com/w3f/infrastructure/wiki/<LINK>"
@@ -63,7 +63,7 @@ spec:
       labels:
         severity: critical
         origin: {{ .Values.deploymentName }}
-    - alert: LowNumberOfFinalizedBlocksShort
+    - alert: PolkadotLowNumberOfFinalizedBlocksShort
       annotations:
         message: 'The number of finalized blocks has not increased for the last 3 minutes'
         # runbook_url: "https://github.com/w3f/infrastructure/wiki/<LINK>"
@@ -72,7 +72,7 @@ spec:
       labels:
         severity: warning
         origin: {{ .Values.deploymentName }}
-    - alert: LowNumberOfFinalizedBlocksLong
+    - alert: PolkadotLowNumberOfFinalizedBlocksLong
       annotations:
         message: 'The number of finalized blocks has not increased for the last 10 minutes'
         # runbook_url: "https://github.com/w3f/infrastructure/wiki/<LINK>"
@@ -80,14 +80,5 @@ spec:
       for: 10m
       labels:
         severity: critical
-        origin: {{ .Values.deploymentName }}
-    - alert: HighCPUUsage
-      annotations:
-        message: 'The node has a CPU usage higher than 100% for 5 minutes'
-        # runbook_url: "https://github.com/w3f/infrastructure/wiki/<LINK>"
-      expr: polkadot_cpu_usage_percentage >= 100
-      for: 5m
-      labels:
-        severity: warning
         origin: {{ .Values.deploymentName }}
 {{ end }}

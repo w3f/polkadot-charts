@@ -22,9 +22,9 @@ grafana:
   namespace: default
 
 createCertIssuer: true
-createWebsocketsCertificate: false
-createWebsocketsService: false
-createWebsocketsIngress: false
+createWebsocketsCertificate: true
+createWebsocketsService: true
+createWebsocketsIngress: true
 createBootNodeService: true
 
 alertRulesLabels:

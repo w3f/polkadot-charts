@@ -1,4 +1,4 @@
-{{ if and (not .Values.local) (not .Values.benchmark) -}}
+{{ if .Values.createWebsocketsService -}}
 apiVersion: v1
 kind: Service
 metadata:

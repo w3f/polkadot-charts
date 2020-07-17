@@ -1,4 +1,4 @@
-{{ if and (not .Values.local) (not .Values.benchmark) -}}
+{{ if .Values.createWebsocketsIngress -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:

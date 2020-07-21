@@ -82,3 +82,5 @@ alertRulesLabels:
 
 serviceMonitorLabels:
   release: prometheus-operator
+
+inPeers: "500"

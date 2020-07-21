@@ -107,8 +107,8 @@ spec:
         {{- if .Values.extraArgs.validator }}
           {{ .Values.extraArgs.validator }}
         {{- end }}
-        {{- else }}
-          --in-peers 500
+        {{- else if .Values.inPeers }}
+          --in-peers {{ .Values.inPeers }}
         {{- if .Values.extraArgs.bootnode }}
           {{ .Values.extraArgs.bootnode }}
         {{- end }}

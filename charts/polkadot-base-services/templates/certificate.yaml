@@ -7,6 +7,7 @@ spec:
   secretName: {{ include "polkadot-deployer.tlsSecretName" . }}
   issuerRef:
     name: letsencrypt
+    kind: ClusterIssuer
   dnsNames:
   - {{ include "polkadot-deployer.websocketsDomain" . }}
 {{ end }}
@@ -21,6 +22,7 @@ spec:
   secretName: {{ include "polkadot-deployer.grafanaTlsSecretName" . }}
   issuerRef:
     name: letsencrypt
+    kind: ClusterIssuer
   dnsNames:
   - {{ include "polkadot-deployer.grafanaDomain" . }}
 {{ end }}

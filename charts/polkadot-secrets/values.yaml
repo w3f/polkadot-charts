@@ -1,6 +1,7 @@
 cloudflareSecret:
   create: true
   apiKey: "my_cloudflare_api_key"
+  namespace: "cert-manager"
 
 grafanaSecret:
   create: true

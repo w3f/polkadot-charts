@@ -1,6 +1,6 @@
 {{ if .Values.createCertIssuer -}}
 apiVersion: cert-manager.io/v1alpha2
-kind: Issuer
+kind: ClusterIssuer
 metadata:
   name: letsencrypt
 spec:

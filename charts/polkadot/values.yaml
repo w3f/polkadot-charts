@@ -1,10 +1,10 @@
 image:
   repo: parity/polkadot
-  tag: v0.8.12
+  tag: v0.8.22
 
 initImage:
   repo: web3f/polkadot-deployer
-  tag: ab026af94011196476ea49ebe8c8d4cb7bd2f6d9
+  tag: bcbefdde689113a53e657bea3973133692ca6725
 
 name: testnet-0-0
 deploymentName: testnet-0

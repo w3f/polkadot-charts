@@ -84,3 +84,11 @@ serviceMonitorLabels:
   release: prometheus-operator
 
 inPeers: "500"
+
+# imagePullSecret:
+#   secretName: docker-registry-secret          #k8s secret name
+#   imageCredentials:
+#     registry: registry.digitalocean.com       #docker registry url
+#     username: username                        #registry username
+#     password: password                        #registry password
+

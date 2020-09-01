@@ -17,6 +17,10 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Import external alertrules
+          command: |
+            scripts/alertrules/import.sh
+      - run:
           command: |
             /scripts/publish-chart.sh
 

@@ -81,3 +81,10 @@ polkadot-custom-chainspec
 {{- define "polkadot-deployer.podRestarterName" -}}
 {{ .Release.Name }}-pod-restarter
 {{- end }}
+
+{{/* Json for private docker registry */}}
+{{- define "imagePullSecret" }}
+{{- with .Values.imagePullSecret.imageCredentials }}
+{{- printf "{\"auths\":{\"%s\":{\"username\":\"%s\",\"password\":\"%s\",\"email\":\"%s\",\"auth\":\"%s\"}}}" .registry .username .password .email (printf "%s:%s" .username .password | b64enc) | b64enc }}
+{{- end }}
+{{- end }}

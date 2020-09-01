@@ -75,6 +75,10 @@ spec:
           subPath: custom_chainspec.json
         {{- end }}
       {{- end }}
+      {{- if .Values.imagePullSecret }}
+      imagePullSecrets:
+      - name: {{ .Values.imagePullSecret.secretName }}
+      {{- end }}
       containers:
       - name: {{ .Release.Name }}
         image: {{ .Values.image.repo }}:{{ .Values.image.tag }}

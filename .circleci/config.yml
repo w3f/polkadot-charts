@@ -20,7 +20,7 @@ jobs:
           command: |
             /scripts/publish-chart.sh
 
-  testPrometheusRules:
+  importAndTestPrometheusRules:
     docker:
       - image: web3f/ci-commons:v2.1.3
     steps:
@@ -37,6 +37,10 @@ jobs:
             tar -xvf /tmp/prometheus.tgz prometheus-${PROM_VER}.linux-amd64/promtool -C /tmp
             mv /tmp/prometheus-$PROM_VER.linux-amd64/promtool /usr/local/bin/
       - run:
+          name: Import external alertrules
+          command: |
+            scripts/alertrules/import.sh
+      - run:
           command: |
             scripts/test_prometheus_rules.sh
 
@@ -49,14 +53,14 @@ workflows:
           filters:
             tags:
               only: /.*/
-      - testPrometheusRules:
+      - importAndTestPrometheusRules:
           filters:
             tags:
               only: /.*/
       - publishChart:
           requires:
             - buildImage
-            - testPrometheusRules
+            - importAndTestPrometheusRules
           filters:
             branches:
               ignore: /.*/

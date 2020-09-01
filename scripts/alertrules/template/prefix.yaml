@@ -2,11 +2,6 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
-  name: {{ .Release.Name }}-alertrules
+  name: {{ .Release.Name }}-alertrules-substrate
   labels:
 {{ toYaml .Values.alertRulesLabels | indent 4 }}
-spec:
-  groups:
-  - name: polkadot.rules
-    rules:
-{{ end }}

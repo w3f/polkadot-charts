@@ -28,7 +28,7 @@ jobs:
       - run:
           name: Install missing dependencies
           command: |
-            YQ_VER=3.3.0
+            YQ_VER=3.3.2
             wget -O /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/${YQ_VER}/yq_linux_amd64
             chmod +x /usr/local/bin/yq
 

@@ -6,7 +6,4 @@ metadata:
   labels:
 {{ toYaml .Values.alertRulesLabels | indent 4 }}
 spec:
-  groups:
-  - name: polkadot.rules
-    rules:
 {{ end }}

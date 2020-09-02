@@ -1,0 +1,9 @@
+{{ if .Values.monitoring }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ .Release.Name }}-alertrules
+  labels:
+{{ toYaml .Values.alertRulesLabels | indent 4 }}
+spec:
+{{ end }}

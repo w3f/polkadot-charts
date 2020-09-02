@@ -20,16 +20,6 @@ jobs:
           command: |
             /scripts/publish-chart.sh
 
-  testPrometheusRules:
-    docker:
-      - image: web3f/ci-commons:v2.4.0
-    steps:
-      - checkout
-      - run:
-          command: |
-            scripts/test_prometheus_rules.sh
-
-
 workflows:
   version: 2
   test-deploy:
@@ -38,15 +28,10 @@ workflows:
           filters:
             tags:
               only: /.*/
-      - testPrometheusRules:
-          filters:
-            tags:
-              only: /.*/
       - publishChart:
           context: github-bot
           requires:
             - buildImage
-            - testPrometheusRules
           filters:
             branches:
               ignore: /.*/

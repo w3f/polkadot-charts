@@ -10,6 +10,7 @@ RUN apt-get update && \
   automake \
   build-essential \
   ca-certificates \
+  flex \
   git \
   libtool
 

@@ -22,10 +22,7 @@ data:
       },
       "genesis": {
         "runtime": {
-          "indices": {
-            "indices": []
-          },
-          "balances": {
+          "palletBalances": {
             "balances": [
               {{- range $index, $value := .Values.chainspec.addresses.stash }}
               [
@@ -35,7 +32,7 @@ data:
               {{- end }}
             ]
           },
-          "session": {
+          "palletSession": {
             "keys": [
               {{- $grandpaSessionKeys := .Values.chainspec.addresses.session_grandpa }}
               {{- $babeSessionKeys := .Values.chainspec.addresses.session_babe }}
@@ -58,7 +55,7 @@ data:
               {{- end }}
             ]
           },
-          "staking": {
+          "palletStaking": {
             "validatorCount": {{ $totalItems }},
             "invulnerables": [
               {{- range $index, $value := .Values.chainspec.addresses.stash }}

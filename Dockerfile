@@ -1,15 +1,38 @@
 FROM parity/subkey:2.0.0 AS subkey
 
-FROM parity/polkadot:v0.8.22 AS polkadot
+FROM parity/polkadot:v0.8.23 AS polkadot
 
+FROM ubuntu:18.04 as jq-builder
+
+RUN apt-get update && \
+  apt-get install --no-install-recommends -y \
+  autoconf \
+  automake \
+  build-essential \
+  ca-certificates \
+  git \
+  libtool
+
+WORKDIR tmp
+
+RUN git clone https://github.com/stedolan/jq.git && \
+  cd jq && \
+  git submodule update --init && \
+  autoreconf -fi  && \
+  ./configure --with-oniguruma=builtin && \
+  make -j8 && \
+  make check && \
+  ./configure --with-oniguruma=builtin --disable-maintainer-mode && \
+  make LDFLAGS=-all-static && \
+  make install && \
+  which jq
 
 FROM ubuntu:18.04
 
-RUN apt update && \
-  apt install --no-install-recommends -y \
+RUN apt-get update && \
+  apt-get install --no-install-recommends -y \
   ca-certificates \
   curl \
-  jq \
   libssl1.0.0 \
   libssl-dev
 
@@ -23,6 +46,7 @@ WORKDIR /app
 
 COPY --from=polkadot /usr/local/bin/polkadot .
 COPY --from=subkey /usr/local/bin/subkey /usr/local/bin/
+COPY --from=jq-builder /usr/local/bin/jq /usr/local/bin
 
 RUN ./polkadot build-spec --chain dev > ./base_chainspec_dev.json && \
   cat ./base_chainspec_dev.json | jq "del(.chainType)" > ./base_chainspec.json && \

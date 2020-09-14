@@ -4,7 +4,7 @@ image:
 
 initImage:
   repo: web3f/polkadot-deployer
-  tag: bcbefdde689113a53e657bea3973133692ca6725
+  tag: 03c71cbe8e96cb241f6d0ca7ba1103c1a82f12e5
 
 name: testnet-0-0
 deploymentName: testnet-0
@@ -91,4 +91,3 @@ inPeers: "500"
 #     registry: registry.digitalocean.com       #docker registry url
 #     username: username                        #registry username
 #     password: password                        #registry password
-

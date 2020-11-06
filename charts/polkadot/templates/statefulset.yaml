@@ -84,7 +84,7 @@ spec:
         command: ["/bin/sh"]
         args:
         - -c
-        - exec /usr/local/bin/polkadot
+        - exec /usr/bin/polkadot
           {{- $chainspec := include "polkadot-deployer.chainspecName" . -}}
           {{- if $chainspec }}
           --chain={{ $chainspec }}

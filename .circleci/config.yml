@@ -3,7 +3,7 @@ version: 2
 jobs:
   buildImage:
     docker:
-      - image: web3f/ci-commons:v1.6.0
+      - image: web3f/ci-commons:v2.4.0
     steps:
       - checkout
       - setup_remote_docker
@@ -13,7 +13,7 @@ jobs:
 
   publishChart:
     docker:
-      - image: web3f/ci-commons:v1.6.0
+      - image: web3f/ci-commons:v2.4.0
     steps:
       - checkout
       - run:
@@ -26,9 +26,12 @@ workflows:
     jobs:
       - buildImage:
           filters:
-            branches:
-              ignore: /.*/
+            tags:
+              only: /.*/
       - publishChart:
+          context: github-bot
+          requires:
+            - buildImage
           filters:
             branches:
               ignore: /.*/

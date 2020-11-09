@@ -1,3 +1,4 @@
 description: Base services for Polkadot Node chart.
 name: polkadot-base-services
 version: v0.17.10
+apiVersion: v2

@@ -1,3 +1,4 @@
 description: Polkadot Node chart.
 name: polkadot
 version: v0.17.10
+apiVersion: v2

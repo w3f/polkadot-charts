@@ -27,9 +27,7 @@ workflows:
       - buildImage:
           filters:
             branches:
-              only:
-                - master
-                - v1
+              ignore: /.*/
       - publishChart:
           filters:
             branches:

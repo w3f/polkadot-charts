@@ -10,6 +10,10 @@ metadata:
     {{- if .Values.grafana.whitelistSourceRange }}
     ingress.kubernetes.io/whitelist-source-range: {{ .Values.grafana.whitelistSourceRange }}
     {{- end }}
+    nginx.ingress.kubernetes.io/server-snippet: |
+      location /metrics {
+        deny all;
+      }
 spec:
   tls:
   - hosts:

@@ -1,6 +1,6 @@
 image:
   repo: parity/polkadot
-  tag: v0.8.23
+  tag: v0.8.27
 
 initImage:
   repo: web3f/polkadot-deployer
@@ -41,7 +41,7 @@ resources: {}
 
 persistence:
   enabled: false
-  dataSize: 128Gi
+  dataSize: 200Gi
   chainspecSize: 1Gi
   accessModes: [ "ReadWriteOnce" ]
 

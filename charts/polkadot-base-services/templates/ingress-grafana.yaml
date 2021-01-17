@@ -25,6 +25,6 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: grafana
+          serviceName: {{ include "polkadot-deployer.grafanaService" . }}
           servicePort: 80
 {{ end }}

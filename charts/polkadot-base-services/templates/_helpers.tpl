@@ -53,6 +53,11 @@ p2p.{{ .Values.domain }}
 grafana.{{ .Values.domain }}
 {{- end }}
 
+{{/* Returns the grafana service name */}}
+{{- define "polkadot-deployer.grafanaService" -}}
+grafana
+{{- end }}
+
 {{/* Returns the external boot node service name */}}
 {{- define "polkadot-deployer.externalBootNodeService" -}}
 {{ .Release.Name }}-external-bootnode

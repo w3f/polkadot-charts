@@ -1,5 +1,5 @@
 {{ if .Values.createWebsocketsIngress -}}
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ .Release.Name }}-websockets
@@ -8,6 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/limit-rps: "10"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    cert-manager.io/cluster-issuer: letsencrypt
 spec:
   tls:
   - hosts:
@@ -19,6 +20,8 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: {{ include "polkadot-deployer.websocketService" . }}
-          servicePort: 9944
+          service:
+            name: {{ include "polkadot-deployer.websocketService" . }}
+            port:
+              number: 9944
 {{ end }}

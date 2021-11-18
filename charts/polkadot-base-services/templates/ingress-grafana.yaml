@@ -1,5 +1,5 @@
 {{ if .Values.monitoring -}}
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ .Release.Name }}-grafana
@@ -14,6 +14,7 @@ metadata:
       location /metrics {
         deny all;
       }
+    cert-manager.io/cluster-issuer: letsencrypt
 spec:
   tls:
   - hosts:
@@ -25,6 +26,8 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: {{ include "polkadot-deployer.grafanaService" . }}
-          servicePort: 80
+          service:
+            name: {{ include "polkadot-deployer.grafanaService" . }}
+            port:
+              number: 80
 {{ end }}

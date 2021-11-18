@@ -25,6 +25,7 @@ workflows:
   test-deploy:
     jobs:
       - buildImage:
+          context: dockerhub-bot
           filters:
             tags:
               only: /.*/

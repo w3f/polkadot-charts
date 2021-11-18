@@ -1,6 +1,6 @@
 FROM parity/subkey:2.0.0 AS subkey
 
-FROM parity/polkadot:v0.8.23 AS polkadot
+FROM parity/polkadot:v0.9.12 AS polkadot
 
 FROM ubuntu:18.04 as jq-builder
 
@@ -37,7 +37,7 @@ RUN apt-get update && \
   libssl1.0.0 \
   libssl-dev
 
-ENV KUBECTL_VERSION=v1.18.1
+ENV KUBECTL_VERSION=v1.22.2
 
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl && \
   chmod a+x kubectl && \

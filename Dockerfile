@@ -12,7 +12,9 @@ RUN apt-get update && \
   ca-certificates \
   flex \
   git \
-  libtool
+  libtool \
+  bison \
+  byacc
 
 WORKDIR tmp
 

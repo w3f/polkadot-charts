@@ -47,7 +47,7 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/${KUBECTL
 
 WORKDIR /app
 
-COPY --from=polkadot /usr/local/bin/polkadot .
+COPY --from=polkadot /usr/bin/polkadot .
 COPY --from=subkey /usr/local/bin/subkey /usr/local/bin/
 COPY --from=jq-builder /usr/local/bin/jq /usr/local/bin
 

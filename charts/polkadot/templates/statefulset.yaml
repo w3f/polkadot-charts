@@ -79,6 +79,14 @@ spec:
       imagePullSecrets:
       - name: {{ .Values.imagePullSecret.secretName }}
       {{- end }}
+      {{- if .Values.affinity }}
+      affinity:
+{{ toYaml .Values.affinity | indent 8 }}      
+      {{- end }}          
+      {{- if .Values.tolerations }}          
+      tolerations:
+{{ toYaml .Values.tolerations | indent 8 }}
+      {{- end }}          
       containers:
       - name: {{ .Release.Name }}
         image: {{ .Values.image.repo }}:{{ .Values.image.tag }}
@@ -193,6 +201,9 @@ spec:
     spec:
       {{- if .Values.persistence.enabled }}
       accessModes: {{ .Values.persistence.accessModes }}
+      {{- if .Values.persistence.storageClassName }}
+      storageClassName: {{ .Values.persistence.storageClassName }}
+      {{- end }}
       resources:
         requests:
           storage: {{ .Values.persistence.dataSize }}

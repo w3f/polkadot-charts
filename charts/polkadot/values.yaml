@@ -1,6 +1,6 @@
 image:
   repo: parity/polkadot
-  tag: v0.9.17
+  tag: v0.9.19
 
 initImage:
   repo: web3f/polkadot-deployer
@@ -44,6 +44,7 @@ persistence:
   dataSize: 200Gi
   chainspecSize: 1Gi
   accessModes: [ "ReadWriteOnce" ]
+  #storageClassName: premium-rwo
 
 dnsNameservers:
 - 173.245.58.93
@@ -83,7 +84,7 @@ alertRulesLabels:
 serviceMonitorLabels:
   release: prometheus-operator
 
-inPeers: "500"
+# inPeers: "100"
 
 # imagePullSecret:
 #   secretName: docker-registry-secret          #k8s secret name
@@ -91,3 +92,6 @@ inPeers: "500"
 #     registry: registry.digitalocean.com       #docker registry url
 #     username: username                        #registry username
 #     password: password                        #registry password
+
+tolerations: []
+affinity: {}

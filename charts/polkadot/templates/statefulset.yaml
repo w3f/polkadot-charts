@@ -103,11 +103,9 @@ spec:
           -d=/data
           {{- if .Values.unsafeEndpointAccess }}
           --unsafe-rpc-external
-          --unsafe-ws-external
           --rpc-methods=Unsafe
           {{- else }}
           --rpc-external
-          --ws-external
           {{- end }}
           --rpc-cors all
           --port {{ .Values.p2pPort }}

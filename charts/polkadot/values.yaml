@@ -1,6 +1,6 @@
 image:
   repo: parity/polkadot
-  tag: v0.9.19
+  tag: v0.9.43
 
 initImage:
   repo: web3f/polkadot-deployer

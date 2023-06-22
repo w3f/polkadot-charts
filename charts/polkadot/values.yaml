@@ -53,7 +53,6 @@ dnsNameservers:
 telemetry: ""
 
 p2pPort: 30333
-rpcPort: 9933
 metricsPort: 9615
 
 extraArgs:

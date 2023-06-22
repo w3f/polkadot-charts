@@ -103,7 +103,7 @@ spec:
           -d=/data
           {{- if .Values.unsafeEndpointAccess }}
           --unsafe-rpc-external
-          --rpc-methods=Unsafe
+          --rpc-methods=unsafe
           {{- else }}
           --rpc-external
           {{- end }}
@@ -138,8 +138,6 @@ spec:
         ports:
         - containerPort: {{ .Values.p2pPort }}
           name: p2p
-        - containerPort: {{ .Values.rpcPort }}
-          name: http-rpc
         - containerPort: 9944
           name: websocket-rpc
         - containerPort: {{ .Values.metricsPort }}
@@ -148,14 +146,14 @@ spec:
           failureThreshold: 100
           httpGet:
             path: /health
-            port: http-rpc
+            port: websocket-rpc
           initialDelaySeconds: 10
           periodSeconds: 10
         livenessProbe:
           failureThreshold: 100
           httpGet:
             path: /health
-            port: http-rpc
+            port: websocket-rpc
           initialDelaySeconds: 10
           periodSeconds: 10
         volumeMounts:

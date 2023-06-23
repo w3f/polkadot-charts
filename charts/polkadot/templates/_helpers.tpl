@@ -49,8 +49,8 @@ polkadot-custom-chainspec
 {{- end }}
 
 {{/* Returns the http RPC service name */}}
-{{- define "polkadot-deployer.rpcService" -}}
-{{ .Release.Name }}-rpc
+{{- define "polkadot-deployer.metricsService" -}}
+{{ .Release.Name }}-metrics
 {{- end }}
 
 {{/* Returns the bootnode service name */}}

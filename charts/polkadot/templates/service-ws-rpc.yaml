@@ -1,0 +1,14 @@
+{{ if .Values.createWebsocketService -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "polkadot-deployer.websocketService" . }}
+  labels:
+    app: {{ .Release.Name }}
+spec:
+  ports:
+  - name: websocket-rpc
+    port: 9944
+  selector:
+    node: {{ .Release.Name }}
+{{ end }}

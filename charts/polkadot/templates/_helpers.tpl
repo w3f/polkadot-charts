@@ -33,9 +33,9 @@ polkadot-custom-chainspec
 {{ .Release.Name }}
 {{- end }}
 
-{{/* Returns the external websockets service name */}}
+{{/* Returns the websocket-rpc service name */}}
 {{- define "polkadot-deployer.websocketService" -}}
-{{ .Release.Name }}-external-websockets
+{{ .Release.Name }}-ws-rpc
 {{- end }}
 
 {{/* Returns the telemetry parameter content */}}

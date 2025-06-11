@@ -94,7 +94,7 @@ spec:
         command: ["/bin/sh"]
         args:
         - -c
-        - exec /usr/bin/{{ .Values.binaryName | default "polkadot" }}
+        - exec {{ .Values.binaryName | default "/usr/bin/polkadot" }}
           {{- $chainspec := include "polkadot-deployer.chainspecName" . -}}
           {{- if $chainspec }}
           --chain={{ $chainspec }}

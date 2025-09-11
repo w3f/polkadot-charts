@@ -77,11 +77,6 @@ polkadot-custom-chainspec
 {{ .Release.Name }}-session-injection
 {{- end }}
 
-{{/* Returns the default name to use with pod restarter  related resources */}}
-{{- define "polkadot-deployer.podRestarterName" -}}
-{{ .Release.Name }}-pod-restarter
-{{- end }}
-
 {{/* Json for private docker registry */}}
 {{- define "imagePullSecret" }}
 {{- with .Values.imagePullSecret.imageCredentials }}
